@@ -1,0 +1,897 @@
+fileFormatVersion: 2
+guid: 7467bcb4fe1d0224d8e2fef024d59648
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2534575202364547740
+    second: Layer0_Body_Skin3_0
+  - first:
+      213: -2035532207407459669
+    second: Layer0_Body_Skin3_1
+  - first:
+      213: -2536632494602483507
+    second: Layer0_Body_Skin3_2
+  - first:
+      213: -5452456472751549075
+    second: Layer0_Body_Skin3_3
+  - first:
+      213: -3320852635291881897
+    second: Layer0_Body_Skin3_4
+  - first:
+      213: -5811116760161679395
+    second: Layer0_Body_Skin3_5
+  - first:
+      213: 338461780263305705
+    second: Layer0_Body_Skin3_6
+  - first:
+      213: -8479051862904585121
+    second: Layer0_Body_Skin3_7
+  - first:
+      213: -7945249770391285540
+    second: Layer0_Body_Skin3_8
+  - first:
+      213: 5361716074078702868
+    second: Layer0_Body_Skin3_9
+  - first:
+      213: -7252448562777390518
+    second: Layer0_Body_Skin3_10
+  - first:
+      213: -2555286491000515028
+    second: Layer0_Body_Skin3_11
+  - first:
+      213: 1421136582546651847
+    second: Layer0_Body_Skin3_12
+  - first:
+      213: 3313852700104849621
+    second: Layer0_Body_Skin3_13
+  - first:
+      213: -2700780733050064891
+    second: Layer0_Body_Skin3_14
+  - first:
+      213: 8513932718035301926
+    second: Layer0_Body_Skin3_15
+  - first:
+      213: -5732465544561429343
+    second: Layer0_Body_Skin3_16
+  - first:
+      213: 3500893809385124241
+    second: Layer0_Body_Skin3_17
+  - first:
+      213: 6647968370631579645
+    second: Layer0_Body_Skin3_18
+  - first:
+      213: -1195400550098080191
+    second: Layer0_Body_Skin3_19
+  - first:
+      213: -6320685870045412577
+    second: Layer0_Body_Skin3_20
+  - first:
+      213: -8095213853781076433
+    second: Layer0_Body_Skin3_21
+  - first:
+      213: 1022423637079406903
+    second: Layer0_Body_Skin3_22
+  - first:
+      213: -43234611075665482
+    second: Layer0_Body_Skin3_23
+  - first:
+      213: -9185252146144668705
+    second: Layer0_Body_Skin3_24
+  - first:
+      213: -8186379516038545764
+    second: Layer0_Body_Skin3_25
+  - first:
+      213: 7931449519836803857
+    second: Layer0_Body_Skin3_26
+  - first:
+      213: -3634778742205217751
+    second: Layer0_Body_Skin3_27
+  - first:
+      213: 7822921819555194074
+    second: Layer0_Body_Skin3_28
+  - first:
+      213: 7846727497393228713
+    second: Layer0_Body_Skin3_29
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 460
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Layer0_Body_Skin3_0
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 1870
+        width: 214
+        height: 335
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c92e371c7be9c2320800000000000000
+      internalID: 2534575202364547740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Layer0_Body_Skin3_1
+      rect:
+        serializedVersion: 2
+        x: 586
+        y: 1871
+        width: 211
+        height: 326
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba29c98fd3650c3e0800000000000000
+      internalID: -2035532207407459669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Layer0_Body_Skin3_2
+      rect:
+        serializedVersion: 2
+        x: 1049
+        y: 1875
+        width: 208
+        height: 328
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc881819f221cccd0800000000000000
+      internalID: -2536632494602483507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Layer0_Body_Skin3_3
+      rect:
+        serializedVersion: 2
+        x: 1503
+        y: 1870
+        width: 214
+        height: 335
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d655d54f9bbf454b0800000000000000
+      internalID: -5452456472751549075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Layer0_Body_Skin3_4
+      rect:
+        serializedVersion: 2
+        x: 1963
+        y: 1870
+        width: 209
+        height: 327
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75ee1027f16f9e1d0800000000000000
+      internalID: -3320852635291881897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Layer0_Body_Skin3_5
+      rect:
+        serializedVersion: 2
+        x: 2423
+        y: 1872
+        width: 214
+        height: 329
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd78e326814ca5fa0800000000000000
+      internalID: -5811116760161679395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Layer0_Body_Skin3_6
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 1396
+        width: 191
+        height: 349
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e104a6223572b400800000000000000
+      internalID: 338461780263305705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Layer0_Body_Skin3_7
+      rect:
+        serializedVersion: 2
+        x: 599
+        y: 1397
+        width: 194
+        height: 342
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f54457f214b545a80800000000000000
+      internalID: -8479051862904585121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Layer0_Body_Skin3_8
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 1398
+        width: 193
+        height: 344
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd0d218fd6dccb190800000000000000
+      internalID: -7945249770391285540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Layer0_Body_Skin3_9
+      rect:
+        serializedVersion: 2
+        x: 1514
+        y: 1396
+        width: 191
+        height: 349
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41d86fd9c54a86a40800000000000000
+      internalID: 5361716074078702868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Layer0_Body_Skin3_10
+      rect:
+        serializedVersion: 2
+        x: 1968
+        y: 1395
+        width: 193
+        height: 344
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a428cdf05702a5b90800000000000000
+      internalID: -7252448562777390518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Layer0_Body_Skin3_11
+      rect:
+        serializedVersion: 2
+        x: 2432
+        y: 1394
+        width: 191
+        height: 348
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c265f84997cc98cd0800000000000000
+      internalID: -2555286491000515028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Layer0_Body_Skin3_12
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 935
+        width: 182
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ca710c3134e8b310800000000000000
+      internalID: 1421136582546651847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Layer0_Body_Skin3_13
+      rect:
+        serializedVersion: 2
+        x: 599
+        y: 935
+        width: 182
+        height: 346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d8f7b3297b2dfd20800000000000000
+      internalID: 3313852700104849621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Layer0_Body_Skin3_14
+      rect:
+        serializedVersion: 2
+        x: 1059
+        y: 942
+        width: 182
+        height: 341
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 500f45e8b36e48ad0800000000000000
+      internalID: -2700780733050064891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Layer0_Body_Skin3_15
+      rect:
+        serializedVersion: 2
+        x: 1519
+        y: 935
+        width: 182
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 626f114c2b0972670800000000000000
+      internalID: 8513932718035301926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Layer0_Body_Skin3_16
+      rect:
+        serializedVersion: 2
+        x: 1979
+        y: 935
+        width: 182
+        height: 346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a4ff3985f03270b0800000000000000
+      internalID: -5732465544561429343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Layer0_Body_Skin3_17
+      rect:
+        serializedVersion: 2
+        x: 2439
+        y: 936
+        width: 182
+        height: 347
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 191b3c00f5ca59030800000000000000
+      internalID: 3500893809385124241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Layer0_Body_Skin3_18
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 479
+        width: 184
+        height: 346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df71789b204524c50800000000000000
+      internalID: 6647968370631579645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Layer0_Body_Skin3_19
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 478
+        width: 190
+        height: 340
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14ee81f7885196fe0800000000000000
+      internalID: -1195400550098080191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Layer0_Body_Skin3_20
+      rect:
+        serializedVersion: 2
+        x: 1048
+        y: 479
+        width: 193
+        height: 343
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f13cc1b80b96848a0800000000000000
+      internalID: -6320685870045412577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Layer0_Body_Skin3_21
+      rect:
+        serializedVersion: 2
+        x: 1497
+        y: 479
+        width: 212
+        height: 346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f26de88e3e508af80800000000000000
+      internalID: -8095213853781076433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Layer0_Body_Skin3_22
+      rect:
+        serializedVersion: 2
+        x: 1963
+        y: 479
+        width: 202
+        height: 339
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 739b41281e0603e00800000000000000
+      internalID: 1022423637079406903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Layer0_Body_Skin3_23
+      rect:
+        serializedVersion: 2
+        x: 2428
+        y: 478
+        width: 193
+        height: 344
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b135dca956666ff0800000000000000
+      internalID: -43234611075665482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Layer0_Body_Skin3_24
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 30
+        width: 214
+        height: 335
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd317a0b6dd678080800000000000000
+      internalID: -9185252146144668705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Layer0_Body_Skin3_25
+      rect:
+        serializedVersion: 2
+        x: 586
+        y: 31
+        width: 211
+        height: 326
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9efcf51433246e80800000000000000
+      internalID: -8186379516038545764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Layer0_Body_Skin3_26
+      rect:
+        serializedVersion: 2
+        x: 1049
+        y: 33
+        width: 208
+        height: 328
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 113b0dfc05b221e60800000000000000
+      internalID: 7931449519836803857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Layer0_Body_Skin3_27
+      rect:
+        serializedVersion: 2
+        x: 1503
+        y: 30
+        width: 214
+        height: 335
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92487b9edfbae8dc0800000000000000
+      internalID: -3634778742205217751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Layer0_Body_Skin3_28
+      rect:
+        serializedVersion: 2
+        x: 1963
+        y: 30
+        width: 209
+        height: 327
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad46d3082f9909c60800000000000000
+      internalID: 7822921819555194074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Layer0_Body_Skin3_29
+      rect:
+        serializedVersion: 2
+        x: 2423
+        y: 32
+        width: 214
+        height: 329
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9abc96bc51d25ec60800000000000000
+      internalID: 7846727497393228713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Layer0_Body_Skin3_0: 2534575202364547740
+      Layer0_Body_Skin3_1: -2035532207407459669
+      Layer0_Body_Skin3_10: -7252448562777390518
+      Layer0_Body_Skin3_11: -2555286491000515028
+      Layer0_Body_Skin3_12: 1421136582546651847
+      Layer0_Body_Skin3_13: 3313852700104849621
+      Layer0_Body_Skin3_14: -2700780733050064891
+      Layer0_Body_Skin3_15: 8513932718035301926
+      Layer0_Body_Skin3_16: -5732465544561429343
+      Layer0_Body_Skin3_17: 3500893809385124241
+      Layer0_Body_Skin3_18: 6647968370631579645
+      Layer0_Body_Skin3_19: -1195400550098080191
+      Layer0_Body_Skin3_2: -2536632494602483507
+      Layer0_Body_Skin3_20: -6320685870045412577
+      Layer0_Body_Skin3_21: -8095213853781076433
+      Layer0_Body_Skin3_22: 1022423637079406903
+      Layer0_Body_Skin3_23: -43234611075665482
+      Layer0_Body_Skin3_24: -9185252146144668705
+      Layer0_Body_Skin3_25: -8186379516038545764
+      Layer0_Body_Skin3_26: 7931449519836803857
+      Layer0_Body_Skin3_27: -3634778742205217751
+      Layer0_Body_Skin3_28: 7822921819555194074
+      Layer0_Body_Skin3_29: 7846727497393228713
+      Layer0_Body_Skin3_3: -5452456472751549075
+      Layer0_Body_Skin3_4: -3320852635291881897
+      Layer0_Body_Skin3_5: -5811116760161679395
+      Layer0_Body_Skin3_6: 338461780263305705
+      Layer0_Body_Skin3_7: -8479051862904585121
+      Layer0_Body_Skin3_8: -7945249770391285540
+      Layer0_Body_Skin3_9: 5361716074078702868
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

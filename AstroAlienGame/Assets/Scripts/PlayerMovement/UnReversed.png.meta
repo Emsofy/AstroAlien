@@ -1,0 +1,897 @@
+fileFormatVersion: 2
+guid: c057b1d3296f89543a711100225c0b70
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4676853892173588411
+    second: UnReversed_0
+  - first:
+      213: 4340135261081033896
+    second: UnReversed_1
+  - first:
+      213: 3926217133023986780
+    second: UnReversed_2
+  - first:
+      213: 513668200459143553
+    second: UnReversed_3
+  - first:
+      213: 7819001618504695410
+    second: UnReversed_4
+  - first:
+      213: 3479656620787917925
+    second: UnReversed_5
+  - first:
+      213: -7671281097856607113
+    second: UnReversed_6
+  - first:
+      213: -4041467977397200738
+    second: UnReversed_7
+  - first:
+      213: -2498090344041082362
+    second: UnReversed_8
+  - first:
+      213: -2359139249509735546
+    second: UnReversed_9
+  - first:
+      213: 5025927462081408175
+    second: UnReversed_10
+  - first:
+      213: 7770151528474455107
+    second: UnReversed_11
+  - first:
+      213: -9006708151978106275
+    second: UnReversed_12
+  - first:
+      213: 806320080693928269
+    second: UnReversed_13
+  - first:
+      213: 8344341234533458510
+    second: UnReversed_14
+  - first:
+      213: 5386904089946097626
+    second: UnReversed_15
+  - first:
+      213: -2039107712746554873
+    second: UnReversed_16
+  - first:
+      213: -5009873282193444066
+    second: UnReversed_17
+  - first:
+      213: -305266197676613163
+    second: UnReversed_18
+  - first:
+      213: -8630102653252106420
+    second: UnReversed_19
+  - first:
+      213: 1491555089356449607
+    second: UnReversed_20
+  - first:
+      213: -4383851367782523132
+    second: UnReversed_21
+  - first:
+      213: 6500877036874422245
+    second: UnReversed_22
+  - first:
+      213: 1482206597435207258
+    second: UnReversed_23
+  - first:
+      213: 3814671807871940975
+    second: UnReversed_24
+  - first:
+      213: -6611325562246085650
+    second: UnReversed_25
+  - first:
+      213: -8930399992311106774
+    second: UnReversed_26
+  - first:
+      213: 7400134101235177491
+    second: UnReversed_27
+  - first:
+      213: 3789347355940065937
+    second: UnReversed_28
+  - first:
+      213: 8701455340683692375
+    second: UnReversed_29
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: UnReversed_0
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 1870
+        width: 214
+        height: 335
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb7e86df5d587e040800000000000000
+      internalID: 4676853892173588411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnReversed_1
+      rect:
+        serializedVersion: 2
+        x: 586
+        y: 1871
+        width: 211
+        height: 326
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8acd1e166024b3c30800000000000000
+      internalID: 4340135261081033896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnReversed_2
+      rect:
+        serializedVersion: 2
+        x: 1049
+        y: 1875
+        width: 208
+        height: 328
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5482f43ea9bc7630800000000000000
+      internalID: 3926217133023986780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnReversed_3
+      rect:
+        serializedVersion: 2
+        x: 1503
+        y: 1870
+        width: 214
+        height: 335
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18908ccb18ae02700800000000000000
+      internalID: 513668200459143553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnReversed_4
+      rect:
+        serializedVersion: 2
+        x: 1963
+        y: 1870
+        width: 209
+        height: 327
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27e3d219b8ca28c60800000000000000
+      internalID: 7819001618504695410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnReversed_5
+      rect:
+        serializedVersion: 2
+        x: 2423
+        y: 1872
+        width: 214
+        height: 329
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5646666b2493a4030800000000000000
+      internalID: 3479656620787917925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnReversed_6
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 1396
+        width: 191
+        height: 349
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77c96165c722a8590800000000000000
+      internalID: -7671281097856607113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnReversed_7
+      rect:
+        serializedVersion: 2
+        x: 599
+        y: 1397
+        width: 194
+        height: 342
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e989f148942d9e7c0800000000000000
+      internalID: -4041467977397200738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnReversed_8
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 1398
+        width: 193
+        height: 344
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 602199a4110055dd0800000000000000
+      internalID: -2498090344041082362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnReversed_9
+      rect:
+        serializedVersion: 2
+        x: 1514
+        y: 1396
+        width: 191
+        height: 349
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6836a411a57a24fd0800000000000000
+      internalID: -2359139249509735546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnReversed_10
+      rect:
+        serializedVersion: 2
+        x: 1968
+        y: 1395
+        width: 193
+        height: 344
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fac2e34f56eafb540800000000000000
+      internalID: 5025927462081408175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnReversed_11
+      rect:
+        serializedVersion: 2
+        x: 2432
+        y: 1394
+        width: 191
+        height: 348
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34cada9a5af15db60800000000000000
+      internalID: 7770151528474455107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnReversed_12
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 935
+        width: 182
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d52eab5c7aeb10380800000000000000
+      internalID: -9006708151978106275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnReversed_13
+      rect:
+        serializedVersion: 2
+        x: 599
+        y: 935
+        width: 182
+        height: 346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d41a60167df903b00800000000000000
+      internalID: 806320080693928269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnReversed_14
+      rect:
+        serializedVersion: 2
+        x: 1059
+        y: 942
+        width: 182
+        height: 341
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e42e201842e0dc370800000000000000
+      internalID: 8344341234533458510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnReversed_15
+      rect:
+        serializedVersion: 2
+        x: 1519
+        y: 935
+        width: 182
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad706509ab022ca40800000000000000
+      internalID: 5386904089946097626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnReversed_16
+      rect:
+        serializedVersion: 2
+        x: 1979
+        y: 935
+        width: 182
+        height: 346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70a7bf2c652a3b3e0800000000000000
+      internalID: -2039107712746554873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnReversed_17
+      rect:
+        serializedVersion: 2
+        x: 2439
+        y: 936
+        width: 182
+        height: 347
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e13b3251bca597ab0800000000000000
+      internalID: -5009873282193444066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnReversed_18
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 479
+        width: 184
+        height: 346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d12d85b20a73cbf0800000000000000
+      internalID: -305266197676613163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnReversed_19
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 478
+        width: 190
+        height: 340
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4780c17c57bb3880800000000000000
+      internalID: -8630102653252106420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnReversed_20
+      rect:
+        serializedVersion: 2
+        x: 1048
+        y: 479
+        width: 193
+        height: 343
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7476400837113b410800000000000000
+      internalID: 1491555089356449607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnReversed_21
+      rect:
+        serializedVersion: 2
+        x: 1497
+        y: 479
+        width: 212
+        height: 346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40f563b586e6923c0800000000000000
+      internalID: -4383851367782523132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnReversed_22
+      rect:
+        serializedVersion: 2
+        x: 1963
+        y: 479
+        width: 202
+        height: 339
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e7d46fc831c73a50800000000000000
+      internalID: 6500877036874422245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnReversed_23
+      rect:
+        serializedVersion: 2
+        x: 2428
+        y: 478
+        width: 193
+        height: 344
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5eaddb1c0bd19410800000000000000
+      internalID: 1482206597435207258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnReversed_24
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 30
+        width: 214
+        height: 335
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6977ea5ccf60f430800000000000000
+      internalID: 3814671807871940975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnReversed_25
+      rect:
+        serializedVersion: 2
+        x: 586
+        y: 31
+        width: 211
+        height: 326
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee3ccdfed6adf34a0800000000000000
+      internalID: -6611325562246085650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnReversed_26
+      rect:
+        serializedVersion: 2
+        x: 1049
+        y: 33
+        width: 208
+        height: 328
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a233524b588d01480800000000000000
+      internalID: -8930399992311106774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnReversed_27
+      rect:
+        serializedVersion: 2
+        x: 1503
+        y: 30
+        width: 214
+        height: 335
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 318906ae1ce82b660800000000000000
+      internalID: 7400134101235177491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnReversed_28
+      rect:
+        serializedVersion: 2
+        x: 1963
+        y: 30
+        width: 209
+        height: 327
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1929f59e757769430800000000000000
+      internalID: 3789347355940065937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnReversed_29
+      rect:
+        serializedVersion: 2
+        x: 2423
+        y: 32
+        width: 214
+        height: 329
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7598062b787c1c870800000000000000
+      internalID: 8701455340683692375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      UnReversed_0: 4676853892173588411
+      UnReversed_1: 4340135261081033896
+      UnReversed_10: 5025927462081408175
+      UnReversed_11: 7770151528474455107
+      UnReversed_12: -9006708151978106275
+      UnReversed_13: 806320080693928269
+      UnReversed_14: 8344341234533458510
+      UnReversed_15: 5386904089946097626
+      UnReversed_16: -2039107712746554873
+      UnReversed_17: -5009873282193444066
+      UnReversed_18: -305266197676613163
+      UnReversed_19: -8630102653252106420
+      UnReversed_2: 3926217133023986780
+      UnReversed_20: 1491555089356449607
+      UnReversed_21: -4383851367782523132
+      UnReversed_22: 6500877036874422245
+      UnReversed_23: 1482206597435207258
+      UnReversed_24: 3814671807871940975
+      UnReversed_25: -6611325562246085650
+      UnReversed_26: -8930399992311106774
+      UnReversed_27: 7400134101235177491
+      UnReversed_28: 3789347355940065937
+      UnReversed_29: 8701455340683692375
+      UnReversed_3: 513668200459143553
+      UnReversed_4: 7819001618504695410
+      UnReversed_5: 3479656620787917925
+      UnReversed_6: -7671281097856607113
+      UnReversed_7: -4041467977397200738
+      UnReversed_8: -2498090344041082362
+      UnReversed_9: -2359139249509735546
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
