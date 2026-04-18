@@ -132,7 +132,7 @@ public class QuestManager : MonoBehaviour
             Manager.dialogue = finalEntry.conversation;
             Manager.index = 0;
             Manager.dialoguePanel.SetActive(true);
-            Manager.StopAllCoroutines();
+            //Manager.StopAllCoroutines();
             Manager.dialogueText.text = "";
             StartCoroutine(Manager.Typing());
         }

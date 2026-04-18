@@ -130,7 +130,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject); // Optional if you want it persistent
+        //DontDestroyOnLoad(gameObject); // Optional if you want it persistent
     }
 
     // Mark a dialogue as seen
