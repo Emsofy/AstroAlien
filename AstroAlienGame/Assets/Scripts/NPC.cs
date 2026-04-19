@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 // 1. This defines the "list" of options
 public enum ItemType { Apple, Wood, Seed, Egg, GoldenEgg, Scrap }
 
@@ -7,6 +8,7 @@ public enum ItemType { Apple, Wood, Seed, Egg, GoldenEgg, Scrap }
 public class DialogueStateRule
 {
     public string requiredQuest;
+    
 
     // 2. This is the actual variable that shows up in the Inspector
     public ItemType itemToCheck;
@@ -50,6 +52,7 @@ public class NPC : MonoBehaviour
             case ItemType.Wood: return GameManager.Instance.woodCount >= questLogic.amountNeeded;
             case ItemType.Seed: return GameManager.Instance.seedCount >= questLogic.amountNeeded;
             case ItemType.Egg: return GameManager.Instance.eggCount >= questLogic.amountNeeded;
+            case ItemType.GoldenEgg: return GameManager.Instance.goldenEggCount >= questLogic.amountNeeded; // Added this!
             case ItemType.Scrap: return GameManager.Instance.scrapMetalCount >= questLogic.amountNeeded;
             default: return false;
         }
