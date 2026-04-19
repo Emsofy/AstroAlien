@@ -14,5 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueEventSO
   dialogueID: BlueAlienConvo
   conversation:
-  - ooee aaee
+  - Hello.
+  - Welcome to our planet!
+  - You're looking for certain materials? Bleep Blorp.
+  - Here's the deal. I need some too, blorp.
+  - Bloop. If you bring me 30 logs, I'll give you some scrap metal in return!
   seen: 0

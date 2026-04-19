@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class DialogueManager : MonoBehaviour
 {
+    
+    
+
     public static DialogueManager Instance;
     public QuestManager Quest;
 
@@ -32,7 +35,10 @@ public class DialogueManager : MonoBehaviour
         {
             Instance = this;
         }
-       
+        else
+        {
+            Destroy(gameObject); // Prevent duplicate managers
+        }
     }
     private void Start()
     {
@@ -60,50 +66,24 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void Begin()
+   public NPC currentNPC; // Set this via the NPC's OnTriggerEnter
+
+public void Begin() 
+{
+    // Ask the specific NPC for its current ID based on its inspector settings
+    dialogueID = currentNPC.GetCurrentDialogueID();
+
+    var finalEntry = database.GetDialogue(dialogueID);
+    if (finalEntry != null) 
     {
-        var introEntry = database.GetDialogue(npcID);
-        bool introFinished = introEntry != null && introEntry.seen;
-
-        // Logic Priority
-        if (!introFinished)
-        {
-            dialogueID = npcID;
-        }
-        else if (Quest.activeQuests.Contains("SpecialFruit") && Quest.HasFruit(1))
-        {
-            dialogueID = "SpecialFruit_Complete";
-            Quest.RemoveFruit(1);
-            Quest.activeQuests.Remove("SpecialFruit");
-            Quest.Finished = true;
-        }
-        else if (Quest.Finished)
-        {
-            dialogueID = "Alien_PostQuest";
-        }
-        else if (Quest.activeQuests.Contains("SpecialFruit"))
-        {
-            dialogueID = "SpecialFruit_Reminder";
-        }
-
-        var finalEntry = database.GetDialogue(dialogueID);
-
-        if (finalEntry != null)
-        {
-            // ONLY start if we actually found dialogue to play
-            AnyDialogueRunning = true;
-            Quest.isDialogueActive = true;
-
-            dialogue = finalEntry.conversation;
-            index = 0;
-
-            dialoguePanel.SetActive(true); // Open the panel here!
-
-            if (typingCoroutine != null) StopCoroutine(typingCoroutine);
-            dialogueText.text = "";
-            typingCoroutine = StartCoroutine(Typing());
-        }
+        AnyDialogueRunning = true;
+        Quest.isDialogueActive = true;
+        dialogue = finalEntry.conversation;
+        index = 0;
+        dialoguePanel.SetActive(true);
+        NextLine();
     }
+}
 
     public void NextLine()
     {
