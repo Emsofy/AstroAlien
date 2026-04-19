@@ -6,7 +6,7 @@ public class Inventory : MonoBehaviour
 {
     public int[] inventory = new int[8];
     public GameObject[] imageDisplay = new GameObject[8];
-    public TreeCollect treescript;
+    //public TreeCollect treescript;
     //[0] = scrap metal
     //[1] = wood          store the amount in each position
     //[2] = seed
@@ -19,10 +19,52 @@ public class Inventory : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        treescript = GetComponent<TreeCollect>();
+        //treescript = GetComponent<TreeCollect>();
+        GameManager.Instance.onInventoryChanged += SyncFromGameManager;
+        SyncFromGameManager(); //inital load
     }
-
+    void OnDestroy()
+    {
+        if (GameManager.Instance != null)
+            GameManager.Instance.onInventoryChanged -= SyncFromGameManager;
+    }
     // Update is called once per frame
+    public void SyncFromGameManager()
+    {
+        var gm = GameManager.Instance;
+
+        inventory[0] = gm.scrapMetalCount;
+        inventory[1] = gm.woodCount;
+        inventory[2] = gm.seedCount;
+        inventory[3] = gm.eggCount;
+        inventory[4] = gm.goldenEggCount;
+        inventory[5] = gm.appleCount;
+        inventory[6] = gm.goldenAppleCount;
+        inventory[7] = gm.chickenCount;
+
+        RefreshUI();
+    }
+    void RefreshUI()
+    {
+        for (int i = 0; i < inventory.Length; i++)
+        {
+            GameObject slot = imageDisplay[i];
+
+            if (inventory[i] <= 0)
+            {
+                slot.SetActive(false);
+                continue;
+            }
+
+            slot.SetActive(true);
+
+            TMP_Text text = slot.GetComponentInChildren<TMP_Text>();
+            if (text != null)
+            {
+                text.text = inventory[i].ToString();
+            }
+        }
+    }
     void Update()
     {
         

@@ -20,17 +20,9 @@ public class ChickenSaveData
     public long nextEggTicks;
 }
 [Serializable]
-public class InventorySaveData
-{
-    public int scrapMetal;
-    public int wood;
-    public int seeds;
-    public int eggs;
-    public int goldEggs;
-    public int fruit;
-    public int goldFruit;
-    public int chickens;
-}
+//public class InventorySaveData
+//{
+//}
 public class SaveData
 {
     public int playerLevel;
@@ -40,5 +32,13 @@ public class SaveData
     public List<string> completedDialogues;
     public List<TreeSaveData> trees;
     public List<ChickenSaveData> chickens;
-    public InventorySaveData inventorySaveData;
+    // public InventorySaveData inventorySaveData;
+    public int appleCount;
+    public int chickenCount;
+    public int woodCount;
+    public int seedCount;
+    public int goldenAppleCount;
+    public int eggCount;
+    public int goldenEggCount;
+    public int scrapMetalCount;
 }

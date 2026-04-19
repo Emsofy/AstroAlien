@@ -17,7 +17,7 @@ public class ChickenCollect : MonoBehaviour
        // PickUpchicken();
         //PlaceChicken();
     }
-    public int PickUpchicken(int chickenCount)
+    public void PickUpchicken()
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -33,24 +33,25 @@ public class ChickenCollect : MonoBehaviour
                 if (root.CompareTag("Chicken"))
                 {
                     Destroy(root.gameObject);
-                    chickenCount++;
-                    inventoryScript.UpdateInventory(7, 1);
+                    //chickenCount++;
+                    //inventoryScript.UpdateInventory(7, 1);
+                    GameManager.Instance.AddChicken(1);
                 }
             }
         }
-        return chickenCount;
+        //return chickenCount;
     }
     public void OnCollisionStay(Collision collision)
     {
         if(collision.gameObject.CompareTag("Pen"))
         {
-            PlaceChicken(GameManager.Instance.chickenCount);
+            PlaceChicken();
             //Debug.Log("In pen");
         }
     }
-    public int PlaceChicken(int chickenCount)
+    public void PlaceChicken()
     {
-        if(Input.GetMouseButtonDown(1) && chickenCount>=1)
+        if(Input.GetMouseButtonDown(1) && GameManager.Instance.chickenCount>=1)
         {
             Vector3 forwardPos = transform.position + transform.forward;
             RaycastHit hit;
@@ -58,8 +59,8 @@ public class ChickenCollect : MonoBehaviour
             {
                 Vector3 spawnpos = hit.point;
                 GameManager.Instance.PlaceChicken(spawnpos);
-                chickenCount--;
-                inventoryScript.UpdateInventory(7, -1);
+                GameManager.Instance.RemoveChicken(1);
+               // inventoryScript.UpdateInventory(7, -1);
                 Debug.Log("placing chicken");
             }
             else
@@ -67,6 +68,24 @@ public class ChickenCollect : MonoBehaviour
                 Debug.Log("Couldn't place chicken");
             }
         }
-        return chickenCount;
+        //return chickenCount;
+    }
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Egg"))
+        {
+            GameManager.Instance.AddEgg(1);
+            Destroy(collision.gameObject);
+            // GameManager.Instance.activeEggs.Remove(collision.gameObject);
+            //SaveSystem.SaveGame();
+
+        }
+        if (collision.gameObject.CompareTag("GoldenEgg"))
+        {
+            GameManager.Instance.AddGoldenEgg(1);
+            Destroy(collision.gameObject);
+            //GameManager.Instance.activeEggs.Remove(collision.gameObject);
+            // SaveSystem.SaveGame();
+        }
     }
 }
