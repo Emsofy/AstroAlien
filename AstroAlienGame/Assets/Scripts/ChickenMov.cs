@@ -59,7 +59,7 @@ public class ChickenMov : MonoBehaviour
         transform.position = data.position;
         nextEggTime = new DateTime(data.nextEggTicks);
         layDuration = TimeSpan.FromMinutes(3);
-        Debug.Log("Running chicken init");
+        //Debug.Log("Running chicken init");
         // Initialize NavMeshAgent
         agent = GetComponent<NavMeshAgent>();
 
@@ -243,7 +243,7 @@ public class ChickenMov : MonoBehaviour
     }
     public ChickenSaveData GetSaveData()
     {
-        Debug.Log("creating new chicken save");
+        //Debug.Log("creating new chicken save");
         return new ChickenSaveData
         {
             id = id,

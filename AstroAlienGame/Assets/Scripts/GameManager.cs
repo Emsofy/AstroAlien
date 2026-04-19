@@ -79,6 +79,7 @@ public class GameManager : MonoBehaviour
        //seedCount = treeScript.PlaceTree(seedCount);
        // seedCount = treeScript.ChopTree(seedCount);
         chickenScript.PickUpchicken();
+        chickenScript.PlaceChicken();
         treeScript.ChopTree();
         treeScript.PlaceTree();
     }
