@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: BlueAlienConvo
   m_EditorClassIdentifier: Assembly-CSharp::DialogueEventSO
   dialogueID: BlueAlienConvo
-  conversation: []
+  conversation:
+  - ooee aaee
   seen: 0

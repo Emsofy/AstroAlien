@@ -114,7 +114,7 @@ public class GameManager : MonoBehaviour
         {
             foreach (var id in completedDialogues)
             {
-                DialogueManager.Instance.MarkSeen(id); // updates scene dialogue objects
+                QuestManager.Instance.MarkSeen(id); // updates scene dialogue objects
             }
         }
     }
