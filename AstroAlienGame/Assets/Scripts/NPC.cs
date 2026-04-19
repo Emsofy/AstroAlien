@@ -16,7 +16,6 @@ public class DialogueStateRule
     public int amountNeeded = 1;
     public string idIfRequirementMet;
     public string idIfRequirementNotMet;
-
     public string idAfterQuestFinished;
 }
 
@@ -31,22 +30,18 @@ public class NPC : MonoBehaviour
     }
     public string GetCurrentDialogueID()
     {
+        // 1. Check if quest is ACTIVE first
         if (QuestManager.Instance.activeQuests.Contains(questLogic.requiredQuest))
         {
-            // Use the helper to check the inventory
-            if (HasEnoughItems())
-            {
-                return questLogic.idIfRequirementMet;
-            }
-            return questLogic.idIfRequirementNotMet;
+            return HasEnoughItems() ? questLogic.idIfRequirementMet : questLogic.idIfRequirementNotMet;
         }
 
-        if (QuestManager.Instance.Finished)
-            return questLogic.idAfterQuestFinished;
+        // 2. Check if quest is FINISHED second
+        if (QuestManager.Instance.Finished) return questLogic.idAfterQuestFinished;
 
+        // 3. DEFAULT to Intro
         return npcID;
     }
-
     // This checks the GameManager based on what you picked in the dropdown
     private bool HasEnoughItems()
     {
@@ -62,7 +57,7 @@ public class NPC : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
@@ -81,5 +76,5 @@ public class NPC : MonoBehaviour
             playerIsClose = false;
             DialogueManager.Instance.playerIsClose = false;
         }
-    }
+    }*/
 }

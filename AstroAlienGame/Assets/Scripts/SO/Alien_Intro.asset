@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c90dc33c8bb5759409643c4f177607be, type: 3}
-  m_Name: conversation
+  m_Name: Alien_Intro
   m_EditorClassIdentifier: Assembly-CSharp::DialogueEventSO
-  dialogueID: conversation
+  dialogueID: Alien_Intro
   conversation:
   - Hi!
   - I haven't seen you around...

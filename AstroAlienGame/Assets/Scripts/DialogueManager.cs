@@ -27,6 +27,7 @@ public class DialogueManager : MonoBehaviour
     private Coroutine typingCoroutine;
     public TextMeshProUGUI Bubble;
 
+
     public static bool AnyDialogueRunning = false;
 
     private void Awake()
@@ -45,17 +46,17 @@ public class DialogueManager : MonoBehaviour
         // Ensure panel starts off
         dialoguePanel.SetActive(false);
     }
- 
+
     private void Update()
     {
-        if (playerIsClose && Input.GetKeyDown(KeyCode.E) && !isTyping)
+        if (playerIsClose && Input.GetKeyUp(KeyCode.E) && !isTyping)
         {
-            // If the panel is ALREADY open, we just want to go to the next line
+           // nextActionTime = Time.time + cooldown; // Prevents double-firing
+
             if (dialoguePanel.activeInHierarchy)
             {
                 NextLine();
             }
-            // If the panel is CLOSED, we start the conversation
             else if (!AnyDialogueRunning)
             {
                 Begin();
@@ -65,22 +66,30 @@ public class DialogueManager : MonoBehaviour
 
    public NPC currentNPC; // Set this via the NPC's OnTriggerEnter
 
-public void Begin() 
-{
-    // Ask the specific NPC for its current ID based on its inspector settings
-    dialogueID = currentNPC.GetCurrentDialogueID();
-
-    var finalEntry = database.GetDialogue(dialogueID);
-    if (finalEntry != null) 
+    public void Begin()
     {
+        dialogueID = currentNPC.GetCurrentDialogueID();
+        Debug.Log("1. Logic chose ID: " + dialogueID);
+
+        var finalEntry = database.GetDialogue(dialogueID);
+
+        if (finalEntry == null)
+        {
+            Debug.LogError("2. DATABASE ERROR: No entry found for " + dialogueID);
+            return;
+        }
+
+        Debug.Log("3. SO Found! Lines in this SO: " + finalEntry.conversation.Length);
+
         AnyDialogueRunning = true;
         Quest.isDialogueActive = true;
         dialogue = finalEntry.conversation;
-        index = 0;
+
+        index = -1; // This ensures we start at the beginning
         dialoguePanel.SetActive(true);
         NextLine();
     }
-}
+
 
     public void NextLine()
     {
@@ -117,5 +126,21 @@ public void Begin()
         if (dialoguePanel != null) dialoguePanel.SetActive(false);
         if (Quest != null) Quest.isDialogueActive = false;
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerIsClose = true;
+            Bubble.enabled = true;
+        }
+    }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Bubble.enabled = false;
+            playerIsClose = false;
+        }
+    }
 }
