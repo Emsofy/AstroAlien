@@ -38,8 +38,8 @@ public class ChickenMov : MonoBehaviour
     public bool eggLayed = false;
 
     [Header("Egg Laying")]
-    public GameObject eggPrefab;
-    public GameObject goldEggPrefab;
+    //public GameObject eggPrefab;
+    //public GameObject goldEggPrefab;
     //private DateTime layTime;
     //public float layIntervalSeconds = 120f; // 2 minutes
 
@@ -57,6 +57,7 @@ public class ChickenMov : MonoBehaviour
     {
         id = data.id;
         transform.position = data.position;
+        eggLayed |= data.eggLayed;
         nextEggTime = new DateTime(data.nextEggTicks);
         layDuration = TimeSpan.FromMinutes(3);
         //Debug.Log("Running chicken init");
@@ -103,7 +104,7 @@ public class ChickenMov : MonoBehaviour
         //Clamping so no neg times
         if (remaining < TimeSpan.Zero)
             remaining = TimeSpan.Zero;
-        if (remaining <= TimeSpan.Zero)
+        if (remaining <= TimeSpan.Zero && !eggLayed)
         {
             LayEgg();
             eggLayed = true;
@@ -191,27 +192,14 @@ public class ChickenMov : MonoBehaviour
     {
         if (!eggLayed)
         {
-            int eggProb = UnityEngine.Random.Range(1, 11);
-            Debug.Log(eggProb);
-            if (eggProb > 2)
-            {
-                Vector3 spawnPos = transform.position + transform.right * UnityEngine.Random.Range(-0.5f, 0.5f);
-                Instantiate(eggPrefab, spawnPos, Quaternion.identity);
-                Debug.Log("Egg laid");
-
-            }
-            else
-            {
-                Vector3 spawnPos = transform.position + transform.right * UnityEngine.Random.Range(-0.5f, 0.5f);
-                Instantiate(goldEggPrefab, spawnPos, Quaternion.identity);
-                Debug.Log("Golden egg laid");
-            }
+            Vector3 spawnPos = transform.position + transform.right * UnityEngine.Random.Range(-0.5f, 0.5f);
+            GameManager.Instance.SpawnEgg(spawnPos);
             SaveSystem.SaveGame();
         }
         else
         {
-            //Debug.Log("Egg already layed");
-            return;
+            Debug.Log("Egg already layed");
+            //return;
         }
     }    
     //void UpdateFollow()
@@ -248,7 +236,8 @@ public class ChickenMov : MonoBehaviour
         {
             id = id,
             position = transform.position,
-            nextEggTicks = nextEggTime.Ticks
+            nextEggTicks = nextEggTime.Ticks,
+            eggLayed = eggLayed,
 
         };
        

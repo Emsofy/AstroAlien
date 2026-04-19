@@ -22,6 +22,11 @@ public class GameManager : MonoBehaviour
     public GameObject chickenPrefab;
     public List<ChickenMov> activeChicks = new List<ChickenMov>();
 
+    [Header("Eggs")]
+    public GameObject eggPrefab;
+    //public GameObject goldEggPrefab;
+    public List<Egg> activeEggs = new List<Egg>();
+
     [Header("Dialogue")]
     public HashSet<string> completedDialogues = new HashSet<string>();
 
@@ -108,6 +113,7 @@ public class GameManager : MonoBehaviour
         ApplyToScene();
         LoadTrees(data);
         LoadChickens(data);
+        LoadEggs(data);
         scrapMetalCount = data.scrapMetalCount;
         goldenAppleCount = data.goldenAppleCount;
         eggCount = data.eggCount;
@@ -310,6 +316,55 @@ public class GameManager : MonoBehaviour
         return chickenDataList;
     }
 
+    //public void SpawnEgg(Vector3 position)
+    //{
+    //    SpawnEgg(position, eggNew);
+    //}
+
+    public void SpawnEgg(Vector3 position)
+    {
+        GameObject obj = Instantiate(eggPrefab, position, Quaternion.identity);
+        Egg eggNew = obj.GetComponent<Egg>();
+        eggNew.StartNew(position);
+        activeEggs.Add(eggNew);
+        SaveSystem.SaveGame();
+
+    }
+    public void LoadEggs(SaveData data)
+    {
+        Debug.Log("trying to load egg");
+        foreach (var egg in activeEggs)
+        {
+            if(egg != null)
+            {
+                Destroy(egg.gameObject);
+            }
+        }
+        activeEggs.Clear();
+        if(data.eggs == null) return;
+        foreach(var eggData in data.eggs)
+        {
+            GameObject obj = Instantiate(eggPrefab, eggData.position, eggPrefab.transform.rotation);
+            Egg eggNew = obj.GetComponent<Egg>();
+            eggNew.Init(eggData);
+            obj.tag = eggNew.Eggtag;
+            activeEggs.Add(eggNew);
+        }
+
+        Debug.Log("Loaded: " +  data.eggs.Count + "eggs");
+    }
+    public List<EggSaveData> GetEggSaveData()
+    {
+        List<EggSaveData> eggDataList = new List<EggSaveData>();
+        foreach (var eggNew in activeEggs)
+        {
+            if (eggNew != null)
+            {
+                eggDataList.Add(eggNew.GetSaveData());
+            }
+        }
+        return eggDataList;
+    }
     public event Action onInventoryChanged;
 
     public void AddScrap(int amount)

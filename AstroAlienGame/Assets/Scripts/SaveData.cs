@@ -18,8 +18,16 @@ public class ChickenSaveData
     public string id;
     public Vector3 position;
     public long nextEggTicks;
+    public bool eggLayed;
 }
 [Serializable]
+public class EggSaveData
+{
+    public string id;
+    public Vector3 position;
+    public string Eggtag;
+
+}
 //public class InventorySaveData
 //{
 //}
@@ -32,6 +40,7 @@ public class SaveData
     public List<string> completedDialogues;
     public List<TreeSaveData> trees;
     public List<ChickenSaveData> chickens;
+    public List <EggSaveData> eggs;
     // public InventorySaveData inventorySaveData;
     public int appleCount;
     public int chickenCount;
