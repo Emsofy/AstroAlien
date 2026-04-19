@@ -69,24 +69,22 @@ public class QuestManager : MonoBehaviour
     // This is called by DialogueManager.NextLine() when a conversation ends.
     public void OnDialogueComplete(string dialogueID)
     {
-        // Save the fact that we saw this dialogue in the GameManager
-        GameManager.Instance.MarkDialogue(dialogueID);
-
-        // Check if we need to start a quest
-        if (dialogueID == "conversation" || dialogueID == "BlueAlienConvo")
+        // If the intro dialogue finishes, START the quest
+        if (dialogueID == "Alien_Intro")
         {
             StartQuest("SpecialFruit");
         }
 
-        // Check if we just finished the fruit quest
+        // If the success dialogue finishes, FINISH the quest
         if (dialogueID == "SpecialFruit_Complete")
         {
             GameManager.Instance.RemoveApple(1);
             activeQuests.Remove("SpecialFruit");
-            Finished = true;
-            GameManager.Instance.SaveGame(); // Save progress immediately
+            Finished = true; // This triggers the "ID After Quest Finished" state
+            GameManager.Instance.SaveGame();
         }
     }
+
 
     private void PickUpFruit()
     {
