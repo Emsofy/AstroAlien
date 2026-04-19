@@ -39,7 +39,7 @@ public class DialogueManager : MonoBehaviour
     }
     private void Start()
     {
-        if (Bubble != null) Bubble.enabled = false;
+        
         if (Quest == null) Quest = FindAnyObjectByType<QuestManager>();
 
         // Ensure panel starts off

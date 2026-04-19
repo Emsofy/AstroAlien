@@ -16,6 +16,7 @@ public class DialogueStateRule
     public int amountNeeded = 1;
     public string idIfRequirementMet;
     public string idIfRequirementNotMet;
+
     public string idAfterQuestFinished;
 }
 
@@ -24,7 +25,10 @@ public class NPC : MonoBehaviour
     public string npcID;
     public DialogueStateRule questLogic;
     [HideInInspector] public bool playerIsClose;
-
+    private void Start()
+    {
+        DialogueManager.Instance.Bubble.enabled = false;
+    }
     public string GetCurrentDialogueID()
     {
         if (QuestManager.Instance.activeQuests.Contains(questLogic.requiredQuest))
@@ -63,6 +67,7 @@ public class NPC : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerIsClose = true;
+            DialogueManager.Instance.Bubble.enabled = true;
             DialogueManager.Instance.currentNPC = this;
             DialogueManager.Instance.playerIsClose = true;
         }
@@ -72,6 +77,7 @@ public class NPC : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            DialogueManager.Instance.Bubble.enabled = false;
             playerIsClose = false;
             DialogueManager.Instance.playerIsClose = false;
         }
