@@ -99,7 +99,7 @@ void Start()
                     int chickenArea = NavMesh.GetAreaFromName("ChickenPen");
                     if (chickenArea == -1)
                     {
-                        Debug.LogError("ChickenPen area NOT FOUND. Check spelling + NavMesh bake.");
+                        Debug.LogError("ChickenPen area NOT FOUND.");
                         return;
                     }
 
@@ -134,7 +134,9 @@ void Start()
     {
         if (collision.gameObject.CompareTag("Egg"))
         {
+            Egg egg = collision.gameObject.GetComponent<Egg>(); 
             GameManager.Instance.AddEgg(1);
+            GameManager.Instance.activeEggs.Remove(egg);
             Destroy(collision.gameObject);
             // GameManager.Instance.activeEggs.Remove(collision.gameObject);
             //SaveSystem.SaveGame();
@@ -142,7 +144,9 @@ void Start()
         }
         if (collision.gameObject.CompareTag("GoldenEgg"))
         {
+            Egg egg = collision.gameObject.GetComponent<Egg>();
             GameManager.Instance.AddGoldenEgg(1);
+            GameManager.Instance.activeEggs.Remove(egg);
             Destroy(collision.gameObject);
             //GameManager.Instance.activeEggs.Remove(collision.gameObject);
             // SaveSystem.SaveGame();

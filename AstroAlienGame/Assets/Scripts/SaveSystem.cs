@@ -24,6 +24,7 @@ public static class SaveSystem
             completedDialogues = new List<string>(gm.completedDialogues),
             trees = new List<TreeSaveData>(),
             chickens = new List<ChickenSaveData>(),
+            eggs = new List<EggSaveData>(),
             //inventorySaveData = gm.inventory
         };
         foreach (var tree in gm.activeTrees)
@@ -34,6 +35,10 @@ public static class SaveSystem
         foreach(var chickenNew in gm.activeChicks)
         {
             data.chickens.Add(chickenNew.GetSaveData());
+        }
+        foreach(var eggNew in  gm.activeEggs)
+        {
+            data.eggs.Add(eggNew.GetSaveData());
         }
         data.appleCount = gm.appleCount;
         data.woodCount = gm.woodCount;
