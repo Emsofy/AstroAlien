@@ -30153,10 +30153,10 @@ PrefabInstance:
       addedObject: {fileID: 436050833}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0bf5f7de968a45a41a78db90ec483dd7, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 436050838}
+      addedObject: {fileID: 436050840}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0bf5f7de968a45a41a78db90ec483dd7, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 436050840}
+      addedObject: {fileID: 436050838}
   m_SourcePrefab: {fileID: 100100000, guid: 0bf5f7de968a45a41a78db90ec483dd7, type: 3}
 --- !u!1 &436050832 stripped
 GameObject:
@@ -30263,6 +30263,8 @@ MonoBehaviour:
   npcID: conversation
   questLogic:
     requiredQuest: SpecialFruit
+    itemToCheck: 0
+    amountNeeded: 1
     idIfRequirementMet: SpecialFruit_Complete
     idIfRequirementNotMet: SpecialFruit_Reminder
     idAfterQuestFinished: Alien_PostQuest
@@ -73643,6 +73645,8 @@ MonoBehaviour:
   npcID: BlueAlienConvo
   questLogic:
     requiredQuest: 
+    itemToCheck: 0
+    amountNeeded: 1
     idIfRequirementMet: 
     idIfRequirementNotMet: 
     idAfterQuestFinished: 

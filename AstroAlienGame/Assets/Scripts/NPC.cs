@@ -1,55 +1,76 @@
 using UnityEngine;
-using static DialogueManager;
+
+// 1. This defines the "list" of options
+public enum ItemType { Apple, Wood, Seed, Egg, GoldenEgg, Scrap }
 
 [System.Serializable]
 public class DialogueStateRule
 {
-    public string requiredQuest;      // e.g., "SpecialFruit"
-    public string idIfRequirementMet;   // e.g., "SpecialFruit_Complete"
-    public string idIfRequirementNotMet; // e.g., "SpecialFruit_Reminder"
-    public string idAfterQuestFinished; // e.g., "Alien_PostQuest"
+    public string requiredQuest;
+
+    // 2. This is the actual variable that shows up in the Inspector
+    public ItemType itemToCheck;
+
+    public int amountNeeded = 1;
+    public string idIfRequirementMet;
+    public string idIfRequirementNotMet;
+    public string idAfterQuestFinished;
 }
+
 public class NPC : MonoBehaviour
 {
-    
-
-    public string npcID; // The Intro ID
-    public DialogueStateRule questLogic; // Fill this in the Inspector!
-    public bool playerIsClose;
+    public string npcID;
+    public DialogueStateRule questLogic;
+    [HideInInspector] public bool playerIsClose;
 
     public string GetCurrentDialogueID()
     {
-        // 1. If Intro not seen, return Intro ID
-       // if (!GameManager.Instance.HasSeenDialogue(npcID)) return npcID;
-
-        // 2. Check if the specific quest for this NPC is active
         if (QuestManager.Instance.activeQuests.Contains(questLogic.requiredQuest))
         {
-            // Check if player has the items (Assuming GameManager handles apples/fruit)
-            if (GameManager.Instance.appleCount >= 1)
+            // Use the helper to check the inventory
+            if (HasEnoughItems())
             {
                 return questLogic.idIfRequirementMet;
             }
-
             return questLogic.idIfRequirementNotMet;
         }
 
-        // 3. If the quest is finished, show the post-quest dialogue
         if (QuestManager.Instance.Finished)
             return questLogic.idAfterQuestFinished;
 
-        // 4. Default fallback
-        return npcID + "_Default";
+        return npcID;
     }
 
-    // Trigger logic...
+    // This checks the GameManager based on what you picked in the dropdown
+    private bool HasEnoughItems()
+    {
+        switch (questLogic.itemToCheck)
+        {
+            case ItemType.Apple: return GameManager.Instance.appleCount >= questLogic.amountNeeded;
+            case ItemType.Wood: return GameManager.Instance.woodCount >= questLogic.amountNeeded;
+            case ItemType.Seed: return GameManager.Instance.seedCount >= questLogic.amountNeeded;
+            case ItemType.Egg: return GameManager.Instance.eggCount >= questLogic.amountNeeded;
+            case ItemType.Scrap: return GameManager.Instance.scrapMetalCount >= questLogic.amountNeeded;
+            default: return false;
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             playerIsClose = true;
-           // DialogueManager.Instance.currentNPC = this; // Pass the whole NPC script
+            DialogueManager.Instance.currentNPC = this;
             DialogueManager.Instance.playerIsClose = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerIsClose = false;
+            DialogueManager.Instance.playerIsClose = false;
         }
     }
 }
