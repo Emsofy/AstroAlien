@@ -1,36 +1,79 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 public class RepairMech : MonoBehaviour
 {
+    [Header("Repair Bools")]
     public bool hasScrap;
     public bool inRepairZone;
     public bool repairing;
 
-    
-    public int repairNumber;
+    [Header("Scaling Vars")]
+    public int baseCost = 2;
+    public float baseRepairTime = 10f; //replace w hours later
 
+    public int currentRepairLevel = 0;
+    public int currentCost;
+    public float currentRepairTime;
+
+    [Header("Time Vars")]
+    private DateTime endTime;
+    private TimeSpan repairDuration; 
+    //public float repairTimer = 0f;
+
+    [Header("Text Vars")]
     public GameObject RepairPromptTXT;
     public GameObject yesRepairTXT;
     public GameObject noRepairTXT;
+    public GameObject repairingTXT;
+
+
+
+    //NEED PERSISTENCE
+    //endTime
+    //currentRepairLevel
+    //repairing
+    public void Init (RepairSaveData data)
+    {
+
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         hasScrap = false;
         inRepairZone = false;
-        repairNumber = 0;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (hasScrap && inRepairZone && Input.GetKeyDown(KeyCode.Y))
+
+        hasScrap = GameManager.Instance.scrapMetalCount > 0;
+
+        currentCost = baseCost + currentRepairLevel;
+        currentRepairTime = baseRepairTime + (currentRepairLevel * 5f);
+
+        //redo logic for start
+
+        //if has scrap and in repair zone and not repairing/ prompt player
+        //if is repairing notify player 
+        //if says yes/ check cost
+        // if have enough/ start repair 
+        //repair runs, repair level go up
+        if (inRepairZone && !repairing)
         {
-            //begin repair
-            Debug.Log("repair has begun");
+            RepairPromptTXT.SetActive(true);
+        }
+        if (hasScrap && inRepairZone && Input.GetKeyDown(KeyCode.Y) && !repairing) 
+        {
             RepairPromptTXT.SetActive(false);
-            yesRepairTXT.SetActive(true);
-            SmallRepair();
+            CheckCost(currentCost);
+        }
+        if (inRepairZone && repairing) //alert player repair is underway
+        {
+            repairingTXT.SetActive(true);
         }
         if (hasScrap && inRepairZone && Input.GetKeyDown(KeyCode.N))
         {
@@ -44,17 +87,25 @@ public class RepairMech : MonoBehaviour
             RepairPromptTXT.SetActive(false);
             noRepairTXT.SetActive(true);
         }
+
+       if (repairing)
+       {
+                TimeSpan remaining = endTime - DateTime.UtcNow; //calculate time left
+                if (remaining < TimeSpan.Zero) 
+                    remaining = TimeSpan.Zero;
+                if (remaining <= TimeSpan.Zero)
+                {
+                    CompleteRepair();
+                }
+       }
+
+
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
-            if (other.CompareTag("ScrapMetal"))
-        {
-           
-            hasScrap = true;
-        }
-
-            if (other.CompareTag("RepairZone"))
+       if (other.CompareTag("RepairZone"))
         {
             inRepairZone = true;
         }
@@ -67,13 +118,59 @@ public class RepairMech : MonoBehaviour
             inRepairZone = false;
             noRepairTXT.SetActive(false);
             yesRepairTXT.SetActive(false);
+            repairingTXT.SetActive(false) ;
         }
     }
 
+    public void CheckCost(int cost)
+    {
+        //if scraps => cost we can repair 
+        if (GameManager.Instance.scrapMetalCount >= cost)
+        {
+            GameManager.Instance.scrapMetalCount -= cost;
+            SmallRepair(currentRepairTime);
+        }
+        else
+        {
+            Debug.Log("need more scrap!");
+        }
+    }
 
-    void SmallRepair()
+    public void SmallRepair(float repairTime)
     {
         repairing = true;
-        repairNumber++; 
+        if (inRepairZone) yesRepairTXT.SetActive(true);
+
+        repairDuration = TimeSpan.FromMinutes(repairTime); //sets timer
+        //will take 2 mins to repair, switch later
+        endTime = DateTime.UtcNow.Add(repairDuration); //calculate end time
+      
+    }
+
+
+    public void CompleteRepair()
+    {
+        if (!repairing) return;
+
+        repairing = false;
+        
+        currentRepairLevel++;
+        Debug.Log("repair completed");
+    }
+
+
+    public RepairSaveData GetSaveData()
+    {
+        return new RepairSaveData
+        {
+            //NEED PERSISTENCE
+            //endTime
+            //currentRepairLevel
+            //repairing
+            currentRepairLevel = currentRepairLevel,
+            repairing = repairing,
+            endTime = endTime
+
+        };
     }
 }
