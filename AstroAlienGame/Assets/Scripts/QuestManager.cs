@@ -18,25 +18,27 @@ public class QuestManager : MonoBehaviour
     [Header("Interaction State")]
     public bool playerIsClose;
     public GameObject currentFruit;
+    
+    
+    public DialogueManager currentAlien; // The specific alien we are touching
 
-    void Awake()
-    {
-        Instance = this;
-    }
+        void Awake() { Instance = this; }
 
-    void Update()
-    {
-        // PICK UP FRUIT
-        // (Dialogue input is now handled inside DialogueManager to prevent double-triggering)
-        if (Input.GetKeyDown(KeyCode.E) && playerIsClose && currentFruit != null)
+        void Update()
         {
+            if (Input.GetKeyDown(KeyCode.E) && currentAlien != null && !currentAlien.dialoguePanel.activeInHierarchy) {
+            currentAlien.Begin();
             Destroy(currentFruit);
             fruitCount++;
             playerIsClose = false;
             currentFruit = null;
             Debug.Log("Fruit picked up! Total: " + fruitCount);
         }
+
+        
     }
+
+ 
 
     private void OnTriggerEnter(Collider other)
     {

@@ -15,7 +15,7 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI dialogueText;
 
     [Header("NPC Settings")]
-    public string npcID; // Set this to "BlueAlien" or "RedAlien" in Inspector
+    public string npcID;
     public string[] dialogue;
     public int index;
     private bool isTyping = false;
@@ -23,44 +23,42 @@ public class DialogueManager : MonoBehaviour
     public bool playerIsClose;
     private Coroutine typingCoroutine;
     public TextMeshProUGUI Bubble;
+
     public static bool AnyDialogueRunning = false;
 
     private void Start()
     {
         if (Bubble != null) Bubble.enabled = false;
-        // Automatically find QuestManager if not assigned
         if (Quest == null) Quest = FindAnyObjectByType<QuestManager>();
+
+        // Ensure panel starts off
+        if (dialoguePanel != null) dialoguePanel.SetActive(false);
     }
 
     private void Update()
     {
         if (playerIsClose && Input.GetKeyDown(KeyCode.E) && !isTyping)
         {
-            // IF PANEL IS HIDDEN: Only start if NO OTHER dialogue is running
-            if (!dialoguePanel.activeInHierarchy)
-            {
-                if (!AnyDialogueRunning)
-                {
-                    Begin();
-                }
-            }
-            else
+
+            // If the panel is ALREADY open, we just want to go to the next line
+            if (dialoguePanel.activeInHierarchy)
             {
                 NextLine();
+            }
+            // If the panel is CLOSED, we start the conversation
+            else if (!AnyDialogueRunning)
+            {
+                Begin();
             }
         }
     }
 
     public void Begin()
     {
-        AnyDialogueRunning = true; // LOCK: No one else can start now
-        Quest.isDialogueActive = true;
-
-        // 1. Look up the specific NPC's intro status
         var introEntry = database.GetDialogue(npcID);
         bool introFinished = introEntry != null && introEntry.seen;
 
-        // 2. Logic Priority
+        // Logic Priority
         if (!introFinished)
         {
             dialogueID = npcID;
@@ -81,13 +79,19 @@ public class DialogueManager : MonoBehaviour
             dialogueID = "SpecialFruit_Reminder";
         }
 
-        // 3. Fetch and Display
         var finalEntry = database.GetDialogue(dialogueID);
+
         if (finalEntry != null)
         {
+            // ONLY start if we actually found dialogue to play
+            AnyDialogueRunning = true;
+            Quest.isDialogueActive = true;
+
             dialogue = finalEntry.conversation;
             index = 0;
-            dialoguePanel.SetActive(true);
+
+            dialoguePanel.SetActive(true); // Open the panel here!
+
             if (typingCoroutine != null) StopCoroutine(typingCoroutine);
             dialogueText.text = "";
             typingCoroutine = StartCoroutine(Typing());
@@ -105,7 +109,6 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
-            // Use the specific ID we just finished to mark it seen
             QuestManager.Instance.MarkSeen(dialogueID);
             zeroText();
         }
@@ -124,10 +127,10 @@ public class DialogueManager : MonoBehaviour
 
     public void zeroText()
     {
-        AnyDialogueRunning = false; // UNLOCK: Others can talk now
+        AnyDialogueRunning = false;
         dialogueText.text = "";
         index = 0;
-        dialoguePanel.SetActive(false);
+        if (dialoguePanel != null) dialoguePanel.SetActive(false);
         if (Quest != null) Quest.isDialogueActive = false;
     }
 
@@ -145,7 +148,10 @@ public class DialogueManager : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerIsClose = false;
-            zeroText();
+            if (dialoguePanel.activeInHierarchy)
+            {
+                zeroText();
+            }
             if (Bubble != null) Bubble.enabled = false;
         }
     }
