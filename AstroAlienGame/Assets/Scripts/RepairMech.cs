@@ -34,10 +34,11 @@ public class RepairMech : MonoBehaviour
     //endTime
     //currentRepairLevel
     //repairing
-    public void Init (RepairSaveData data)
+
+    /*public void Init (RepairSaveData data)
     {
 
-    }
+    }*/
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -159,7 +160,7 @@ public class RepairMech : MonoBehaviour
     }
 
 
-    public RepairSaveData GetSaveData()
+    /*public RepairSaveData GetSaveData()
     {
         return new RepairSaveData
         {
@@ -172,5 +173,5 @@ public class RepairMech : MonoBehaviour
             endTime = endTime
 
         };
-    }
+    }*/
 }
