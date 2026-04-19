@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ChickenCollect : MonoBehaviour
 {
@@ -13,11 +14,12 @@ public class ChickenCollect : MonoBehaviour
     //private bool hasHit = false;
     public Inventory inventoryScript;
     public GameObject player;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+   public int chickenNavMeshAreaMask;
+// Start is called once before the first execution of Update after the MonoBehaviour is created
+void Start()
     {
         inventoryScript = GetComponent<Inventory>();
-
+        chickenNavMeshAreaMask = NavMesh.GetAreaFromName("ChickenPen");
     }
 
     // Update is called once per frame
@@ -62,7 +64,7 @@ public class ChickenCollect : MonoBehaviour
                 Debug.DrawRay(transform.position, transform.forward* maxDistance, Color.hotPink);
             }
         }
-        //return chickenCount;
+        
     }
     private void OnDrawGizmos()
     {
@@ -90,17 +92,40 @@ public class ChickenCollect : MonoBehaviour
             // Raycast downwards
             if (Physics.Raycast(rayOrigin, Vector3.down, out hit, 100f))
             {
-                hitPoint = hit.point;
-                //hasHit = true;
-                //Vector3 spawnpos = hit.point;
-                GameManager.Instance.PlaceChicken(hit.point);
-                GameManager.Instance.RemoveChicken(1);
-               // inventoryScript.UpdateInventory(7, -1);
-                Debug.Log("placing chicken");
+                NavMeshHit navHit;
+                //int chickenArea = NavMesh.GetAreaFromName("ChickenPen");
+                if (NavMesh.SamplePosition(hit.point, out navHit, 2f, NavMesh.AllAreas))
+                {
+                    int chickenArea = NavMesh.GetAreaFromName("ChickenPen");
+                    if (chickenArea == -1)
+                    {
+                        Debug.LogError("ChickenPen area NOT FOUND. Check spelling + NavMesh bake.");
+                        return;
+                    }
+
+                    //NavMeshPath path = new NavMeshPath();
+                    //NavMeshAgent tempAgent = GetComponent<NavMeshAgent>();
+                    int hitAreaMask = navHit.mask;
+                    if ((hitAreaMask & (1 << chickenArea)) != 0)
+                    {
+                        GameManager.Instance.PlaceChicken(navHit.position);
+                        GameManager.Instance.RemoveChicken(1);
+                        Debug.Log("placing chicken");
+                        return;
+                    }
+                }
+                Debug.Log("Couldn't place chicken (invalid NavMesh for chicken)");
+                //     //hitPoint = hit.point;
+                //     //hasHit = true;
+                //     //Vector3 spawnpos = hit.point;
+                //     GameManager.Instance.PlaceChicken(hit.point);
+                // GameManager.Instance.RemoveChicken(1);
+                //// inventoryScript.UpdateInventory(7, -1);
+                // Debug.Log("placing chicken");
             }
             else
             {
-                Debug.Log("Couldn't place chicken");
+                Debug.Log("Couldn't place chicken (no ground hit)");
             }
         }
         //return chickenCount;

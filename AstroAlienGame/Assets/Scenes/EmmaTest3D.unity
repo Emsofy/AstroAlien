@@ -1258,9 +1258,10 @@ MonoBehaviour:
   rayDistance: 1
   rayHeight: 2
   radius: 1.5
-  maxDistance: 0.5
+  maxDistance: 1
   inventoryScript: {fileID: 313841650}
   player: {fileID: 313841647}
+  chickenNavMeshAreaMask: 0
 --- !u!1001 &322026973
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2544,7 +2545,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
   m_SerializedVersion: 0
-  m_AgentTypeID: 0
+  m_AgentTypeID: -1372625422
   m_CollectObjects: 2
   m_Size: {x: 10, y: 10, z: 10}
   m_Center: {x: 0, y: 2, z: 0}
@@ -4132,6 +4133,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1271564906691488054, guid: af26dc4f3e37c8f448dc6f8528b6d2c4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1853005927353569353, guid: af26dc4f3e37c8f448dc6f8528b6d2c4, type: 3}
+      propertyPath: m_AgentTypeID
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1940577718303372172, guid: af26dc4f3e37c8f448dc6f8528b6d2c4, type: 3}
