@@ -132,22 +132,23 @@ void Start()
     }
     public void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Egg"))
+        GameObject root = collision.transform.root.gameObject;
+        if (root.CompareTag("Egg"))
         {
-            Egg egg = collision.gameObject.GetComponent<Egg>(); 
+            Egg egg = root.GetComponent<Egg>(); 
             GameManager.Instance.AddEgg(1);
             GameManager.Instance.activeEggs.Remove(egg);
-            Destroy(collision.gameObject);
+            Destroy(root.gameObject);
             // GameManager.Instance.activeEggs.Remove(collision.gameObject);
             //SaveSystem.SaveGame();
 
         }
-        if (collision.gameObject.CompareTag("GoldenEgg"))
+        if (root.CompareTag("GoldenEgg"))
         {
-            Egg egg = collision.gameObject.GetComponent<Egg>();
+            Egg egg = root.GetComponent<Egg>();
             GameManager.Instance.AddGoldenEgg(1);
             GameManager.Instance.activeEggs.Remove(egg);
-            Destroy(collision.gameObject);
+            Destroy(root.gameObject);
             //GameManager.Instance.activeEggs.Remove(collision.gameObject);
             // SaveSystem.SaveGame();
         }
