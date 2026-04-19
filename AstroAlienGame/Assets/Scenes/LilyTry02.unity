@@ -3946,12 +3946,11 @@ MonoBehaviour:
   Manager: {fileID: 0}
   activeQuests:
   - SpecialFruit
-  fruitCount: 0
   Finished: 0
   isDialogueActive: 0
   playerIsClose: 0
   currentFruit: {fileID: 0}
-  currentAlien: {fileID: 0}
+  HasFruit: 0
 --- !u!114 &1530479589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3993,7 +3992,6 @@ MonoBehaviour:
   - {fileID: 1231602904}
   - {fileID: 1069127161}
   - {fileID: 1786267884}
-  treescript: {fileID: 0}
 --- !u!1 &1563582561
 GameObject:
   m_ObjectHideFlags: 0
@@ -4739,15 +4737,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ec1608c46a62e9f4f8f83fb975ee9181, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.84
+      value: 2.81
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ec1608c46a62e9f4f8f83fb975ee9181, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.95
+      value: 4.06
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ec1608c46a62e9f4f8f83fb975ee9181, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12.8
+      value: -12.75
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ec1608c46a62e9f4f8f83fb975ee9181, type: 3}
       propertyPath: m_LocalRotation.w
