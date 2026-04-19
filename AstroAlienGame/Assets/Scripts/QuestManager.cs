@@ -24,25 +24,33 @@ public class QuestManager : MonoBehaviour
 
         void Awake() { Instance = this; }
 
-        void Update()
+    void Update()
+    {
+        // Check if player is near a fruit AND presses E
+        if (playerIsClose && Input.GetKeyDown(KeyCode.E))
         {
-            if (Input.GetKeyDown(KeyCode.E) && currentAlien != null && !currentAlien.dialoguePanel.activeInHierarchy) {
-            currentAlien.Begin();
-            Destroy(currentFruit);
-            fruitCount++;
-            playerIsClose = false;
-            currentFruit = null;
-            Debug.Log("Fruit picked up! Total: " + fruitCount);
+            PickUpFruit();
         }
-
-        
     }
 
- 
+    private void PickUpFruit()
+    {
+        Destroy(currentFruit);
+        fruitCount++;
+        playerIsClose = false; // Reset so we don't try to destroy it again
+        currentFruit = null;
+        Debug.Log("Fruit Picked Up! Total: " + fruitCount);
+    }
+
+
+
+
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Fruit"))
+
+
+            if (other.CompareTag("Fruit"))
         {
             playerIsClose = true;
             currentFruit = other.gameObject;

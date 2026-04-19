@@ -26,20 +26,30 @@ public class DialogueManager : MonoBehaviour
 
     public static bool AnyDialogueRunning = false;
 
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject); // Prevent duplicate managers
+        }
+    }
     private void Start()
     {
         if (Bubble != null) Bubble.enabled = false;
         if (Quest == null) Quest = FindAnyObjectByType<QuestManager>();
 
         // Ensure panel starts off
-        if (dialoguePanel != null) dialoguePanel.SetActive(false);
+        dialoguePanel.SetActive(false);
     }
-
+ 
     private void Update()
     {
         if (playerIsClose && Input.GetKeyDown(KeyCode.E) && !isTyping)
         {
-
             // If the panel is ALREADY open, we just want to go to the next line
             if (dialoguePanel.activeInHierarchy)
             {
@@ -134,25 +144,4 @@ public class DialogueManager : MonoBehaviour
         if (Quest != null) Quest.isDialogueActive = false;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            playerIsClose = true;
-            if (Bubble != null) Bubble.enabled = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            playerIsClose = false;
-            if (dialoguePanel.activeInHierarchy)
-            {
-                zeroText();
-            }
-            if (Bubble != null) Bubble.enabled = false;
-        }
-    }
 }
