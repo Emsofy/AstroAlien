@@ -35,35 +35,42 @@ public static class SaveSystem
         {
             data.chickens.Add(chickenNew.GetSaveData());
         }
-
-        for (int i = 0; i <= gm.inventory.Length; i++)
-        {
-            if (i == 0)
-            {
-                //scrapmetal= gm.scrapmetal[i]??
-            }
-            if (i == 1)
-            {
-            }
-            if (i == 2)
-            {
-            }
-            if (i == 3)
-            {
-            }
-            if (i == 4)
-            {
-            }
-            if (i == 5)
-            {
-            }
-            if (i == 6)
-            {
-            }
-            if (i == 7)
-            {
-            }
-        }
+        data.appleCount = gm.appleCount;
+        data.woodCount = gm.woodCount;
+        data.seedCount = gm.seedCount;
+        data.chickenCount = gm.chickenCount;
+        data.goldenAppleCount = gm.goldenAppleCount;
+        data.eggCount = gm.eggCount;
+        data.goldenEggCount = gm.goldenEggCount;
+        data.scrapMetalCount = gm.scrapMetalCount;
+        //for (int i = 0; i <= gm.inventory.Length; i++)
+        //{
+        //    if (i == 0)
+        //    {
+        //        //scrapmetal= gm.scrapmetal[i]??
+        //    }
+        //    if (i == 1)
+        //    {
+        //    }
+        //    if (i == 2)
+        //    {
+        //    }
+        //    if (i == 3)
+        //    {
+        //    }
+        //    if (i == 4)
+        //    {
+        //    }
+        //    if (i == 5)
+        //    {
+        //    }
+        //    if (i == 6)
+        //    {
+        //    }
+        //    if (i == 7)
+        //    {
+        //    }
+        //}
 
         string json = JsonUtility.ToJson(data, true);
         File.WriteAllText(path, json);

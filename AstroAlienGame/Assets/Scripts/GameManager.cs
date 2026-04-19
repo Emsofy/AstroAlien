@@ -39,7 +39,13 @@ public class GameManager : MonoBehaviour
     [Header("Inventory")]
     public int chickenCount;
     public int seedCount;
-
+    public int appleCount;
+    public int woodCount;
+    public int goldenAppleCount;
+    public int eggCount;
+    public int goldenEggCount;
+    public int scrapMetalCount;
+    //public int[] inventory = new int[8];
 
 
 
@@ -69,9 +75,12 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-       chickenCount = chickenScript.PickUpchicken(chickenCount);
-       seedCount = treeScript.PlaceTree(seedCount);
-        seedCount = treeScript.ChopTree(seedCount);
+       //chickenCount = chickenScript.PickUpchicken(chickenCount);
+       //seedCount = treeScript.PlaceTree(seedCount);
+       // seedCount = treeScript.ChopTree(seedCount);
+        chickenScript.PickUpchicken();
+        treeScript.ChopTree();
+        treeScript.PlaceTree();
     }
 
    
@@ -98,6 +107,14 @@ public class GameManager : MonoBehaviour
         ApplyToScene();
         LoadTrees(data);
         LoadChickens(data);
+        scrapMetalCount = data.scrapMetalCount;
+        goldenAppleCount = data.goldenAppleCount;
+        eggCount = data.eggCount;
+        goldenEggCount = data.goldenEggCount;
+        appleCount = data.appleCount;
+        woodCount = data.woodCount;
+        seedCount = data.seedCount;
+        chickenCount = data.chickenCount;
         unsavedChanges = false; // loaded state is clean
     }
 
@@ -292,5 +309,103 @@ public class GameManager : MonoBehaviour
         return chickenDataList;
     }
 
+    public event Action onInventoryChanged;
 
+    public void AddScrap(int amount)
+    {
+       
+        scrapMetalCount += amount;
+        onInventoryChanged?.Invoke();
+        SaveSystem.SaveGame();
+    }
+    public void RemoveScrap(int amount)
+    {
+        scrapMetalCount -= amount;
+        onInventoryChanged?.Invoke();
+        SaveSystem.SaveGame();
+    }
+    public void AddWood(int amount)
+    {
+        woodCount += amount;
+        onInventoryChanged?.Invoke();
+        SaveSystem.SaveGame();
+    }
+    public void RemoveWood(int amount)
+    {
+        woodCount -= amount;
+        onInventoryChanged?.Invoke();
+        SaveSystem.SaveGame();
+    }
+    public void AddSeed(int amount)
+    {
+        seedCount += amount;
+        onInventoryChanged?.Invoke();
+        SaveSystem.SaveGame();
+    }
+    public void RemoveSeed(int amount)
+    {
+        seedCount -= amount;
+        onInventoryChanged?.Invoke();
+        SaveSystem.SaveGame();
+    }
+    public void AddEgg(int amount)
+    {
+        eggCount += amount;
+        onInventoryChanged?.Invoke();
+        SaveSystem.SaveGame();
+    }
+    public void RemoveEgg(int amount)
+    {
+        eggCount -= amount;
+        onInventoryChanged?.Invoke();
+        SaveSystem.SaveGame();
+    }
+    public void AddGoldenEgg(int amount)
+    {
+        goldenEggCount += amount;
+        onInventoryChanged?.Invoke();
+        SaveSystem.SaveGame();
+    }
+    public void RemoveGoldenEgg(int amount)
+    {
+        goldenEggCount -= amount;
+        onInventoryChanged?.Invoke();
+        SaveSystem.SaveGame();
+    }
+    public void AddApple(int amount)
+    {
+        appleCount += amount;
+        onInventoryChanged?.Invoke();
+        SaveSystem.SaveGame();
+    }
+    public void RemoveApple(int amount)
+    {
+        appleCount -= amount;
+        onInventoryChanged?.Invoke();
+        SaveSystem.SaveGame();
+    }
+    public void AddGoldenApple(int amount)
+    {
+        goldenAppleCount += amount;
+        onInventoryChanged?.Invoke();
+        SaveSystem.SaveGame();
+    }
+    public void RemoveGoldenApple(int amount)
+    {
+        goldenAppleCount -= amount;
+        onInventoryChanged?.Invoke();
+        SaveSystem.SaveGame();
+    }
+    public void AddChicken(int amount)
+    {
+        chickenCount += amount;
+        onInventoryChanged?.Invoke();
+        SaveSystem.SaveGame();
+    }
+    public void RemoveChicken(int amount)
+    {
+        chickenCount -= amount;
+        onInventoryChanged?.Invoke();
+        SaveSystem.SaveGame();
+    }
 }

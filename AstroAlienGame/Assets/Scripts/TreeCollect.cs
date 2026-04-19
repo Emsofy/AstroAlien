@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class TreeCollect : MonoBehaviour
 {
-    public int woodCount = 0;
+    //public int woodCount = 0;
     //public int seedCount = 0;
-    public int appleCount = 0;
+    //public int appleCount = 0;
     public bool hasGoldApple = false;
     public GameObject hitPoint;
     public float treeDistance = 2f; //distance player is away from tree for raycast to work
@@ -31,9 +31,9 @@ public class TreeCollect : MonoBehaviour
         //PlaceTree();
     }
 
-    public int PlaceTree(int seedCount)
+    public void PlaceTree()
     {
-        if (Input.GetMouseButtonDown(1) && seedCount >= 1) //add && to check if placeable tile (collision compare tag planter plot)
+        if (Input.GetMouseButtonDown(1) && GameManager.Instance.seedCount >= 1) //add && to check if placeable tile (collision compare tag planter plot)
         {
             //Vector3 origin = hitPoint.transform.position;
             //Vector3 direction = hitPoint.transform.forward;
@@ -44,19 +44,20 @@ public class TreeCollect : MonoBehaviour
             {
                 Vector3 spawnpos = hit.point;
                 GameManager.Instance.PlantTree(spawnpos);
-                seedCount--;
+                //GameManager.Instance.seedCount--;
                 Debug.Log("planting seed");
-                inventoryScript.UpdateInventory(2, -1);
+                //inventoryScript.UpdateInventory(2, -1);
+                GameManager.Instance.RemoveSeed(1);
             }
         }
-        else if (Input.GetMouseButtonDown(1) && seedCount <= 0)
+        else if (Input.GetMouseButtonDown(1) && GameManager.Instance.seedCount <= 0)
         {
             Debug.Log("couldn't plant seed");
         }
-        return seedCount;
+        //return seedCount;
     }
 
-    public int ChopTree(int seedCount)
+    public void ChopTree()
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -92,24 +93,29 @@ public class TreeCollect : MonoBehaviour
 
                     int woodRand = Random.Range(5, 11);
                     Debug.Log("wood given:" + woodRand);
-                    woodCount += woodRand;
-                    inventoryScript.UpdateInventory(1, woodRand);
-                    
+                    //woodCount += woodRand;
+                    // inventoryScript.UpdateInventory(1, woodRand);
+                    GameManager.Instance.AddWood(woodRand);
+
 
                     int seedRand = Random.Range(1, 4);
                     Debug.Log("seed given:" + seedRand);
-                    seedCount += seedRand;
-                    inventoryScript.UpdateInventory(2, seedRand);
+                    //seedCount += seedRand;
+                    //inventoryScript.UpdateInventory(2, seedRand);
+                    GameManager.Instance.AddSeed(seedRand);
 
                     if (root.CompareTag("AppleTree"))
                     {
-                        appleCount += 3;
+                        //appleCount += 3;
                         Debug.Log("apple given: 3");
+                        GameManager.Instance.AddApple(3);
                         //inventoryScript.UpdateInventory(5, appleCount);
                     }
                     else if (root.CompareTag("GoldenTree"))
                     {
-                        appleCount += 1;
+                        //appleCount += 1;
+                        GameManager.Instance.AddApple(1);
+                        GameManager.Instance.AddGoldenApple(1);
                         hasGoldApple = true;
                         Debug.Log("gold apple got got");
                     }
@@ -130,7 +136,7 @@ public class TreeCollect : MonoBehaviour
             //}
                Debug.DrawRay(transform.position, origin * treeDistance, Color.red, 0.5f);
         }
-        return seedCount;
+       // return seedCount;
     }
 
     void SpawnStump(GameObject tree)
