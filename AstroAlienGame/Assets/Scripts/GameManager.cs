@@ -8,9 +8,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    [Header("Player")]
-    public int playerLevel = 1;
-    public Vector3 playerPosition;
+    //[Header("Player")]
+    //public int playerLevel = 1;
+    //public Vector3 playerPosition;
 
 
     [Header("Trees")]
@@ -96,8 +96,8 @@ public class GameManager : MonoBehaviour
         SaveData data = SaveSystem.LoadGame();
         if (data == null) return;
 
-        playerLevel = data.playerLevel;
-        playerPosition = data.playerPosition;
+        //playerLevel = data.playerLevel;
+        //playerPosition = data.playerPosition;
 
         completedDialogues = new HashSet<string>(data.completedDialogues ?? new List<string>());
 
@@ -121,10 +121,10 @@ public class GameManager : MonoBehaviour
     // New method
     private void ApplyToScene()
     {
-        // Player
-        GameObject player = GameObject.FindWithTag("Player");
-        if (player != null)
-            player.transform.position = playerPosition;
+        //// Player
+        //GameObject player = GameObject.FindWithTag("Player");
+        //if (player != null)
+        //    player.transform.position = playerPosition;
 
         // DialogueManager
         if (DialogueManager.Instance != null)
@@ -135,14 +135,14 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    public void UpdatePlayerPosition(Vector3 newPos)
-    {
-        if (Vector3.Distance(playerPosition, newPos) > 0.000001f)
-        {
-            playerPosition = newPos;
-            unsavedChanges = true;
-        }
-    }
+    //public void UpdatePlayerPosition(Vector3 newPos)
+    //{
+    //    if (Vector3.Distance(playerPosition, newPos) > 0.000001f)
+    //    {
+    //        playerPosition = newPos;
+    //        unsavedChanges = true;
+    //    }
+    //}
     public void HandleOfflineTime(long ticks)
     {
         DateTime lastLogin = new DateTime(ticks);
@@ -177,7 +177,7 @@ public class GameManager : MonoBehaviour
     public bool HasSeenDialogue(string id) => completedDialogues.Contains(id);
     public void ResetMemory()
     {
-        playerPosition = Vector3.zero;
+        //playerPosition = Vector3.zero;
         completedDialogues.Clear();
         lastComputedOfflineSeconds = 0;
         unsavedChanges = true;

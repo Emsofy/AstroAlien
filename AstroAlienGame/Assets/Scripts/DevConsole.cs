@@ -171,9 +171,37 @@ public class DevConsole : MonoBehaviour
                 }
 
 
-            }
+            },
+            {"delete_chickens", _ =>
+                {
+                    var chickenlist =GameManager.Instance.activeChicks;
+                    foreach(var chickenNew in chickenlist)
+                    {
+                        if(chickenNew != null)
+                        {
+                            Log("Deleted chicken " + chickenNew.id);
+                            UnityEngine.Object.Destroy (chickenNew.gameObject);
+                        }
+                    }
+                    chickenlist.Clear();
+                }
+            },
+            {"clear_inventory", _ =>
+                {
+                    GameManager.Instance.scrapMetalCount = 0;
+                    GameManager.Instance.woodCount = 0;
+                    GameManager.Instance.seedCount = 0;
+                    GameManager.Instance.eggCount = 0;
+                    GameManager.Instance.goldenEggCount = 0;
+                    GameManager.Instance.appleCount = 0;
+                    GameManager.Instance.goldenAppleCount = 0;
+                    GameManager.Instance.chickenCount = 0;
+                    Log("Cleared inventory");
 
-           
+                }
+
+
+            }
             
         };
     }

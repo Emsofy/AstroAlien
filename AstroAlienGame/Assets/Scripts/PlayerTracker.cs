@@ -12,7 +12,7 @@ public class PlayerTracker : MonoBehaviour
             transform.position += move * Time.deltaTime * 5f;
 
             // Notify GameManager of the new position
-            GameManager.Instance.UpdatePlayerPosition(transform.position);
+           // GameManager.Instance.UpdatePlayerPosition(transform.position);
         }
 
     }
@@ -21,7 +21,7 @@ public class PlayerTracker : MonoBehaviour
     {
         if (GameManager.Instance != null)
         {
-            GameManager.Instance.UpdatePlayerPosition(transform.position);
+           // GameManager.Instance.UpdatePlayerPosition(transform.position);
         }
     }
 }
