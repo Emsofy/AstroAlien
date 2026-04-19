@@ -827,6 +827,7 @@ MonoBehaviour:
   isDialogueActive: 0
   playerIsClose: 0
   currentFruit: {fileID: 2052791569}
+  currentAlien: {fileID: 0}
 --- !u!1 &713452500
 GameObject:
   m_ObjectHideFlags: 0
@@ -3140,6 +3141,7 @@ MonoBehaviour:
   isDialogueActive: 0
   playerIsClose: 0
   currentFruit: {fileID: 2052791569}
+  currentAlien: {fileID: 0}
 --- !u!1001 &1609566361
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3231,9 +3233,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4536600914873794995f8037c785f91d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1609566370}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4536600914873794995f8037c785f91d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1609566373}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4536600914873794995f8037c785f91d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1609566376}
@@ -3351,20 +3350,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 4.325246
   m_Center: {x: 0.2932153, y: 1.258581, z: 0}
---- !u!114 &1609566373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1609566362}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd61995b7801dc345a5f9d2da428e786, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnterDialogue
-  dialogueText: {fileID: 160637281}
-  Manager: {fileID: 1435441443}
 --- !u!114 &1609566376
 MonoBehaviour:
   m_ObjectHideFlags: 0
