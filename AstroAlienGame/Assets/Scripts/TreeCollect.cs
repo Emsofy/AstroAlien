@@ -6,9 +6,15 @@ public class TreeCollect : MonoBehaviour
     //public int seedCount = 0;
     //public int appleCount = 0;
     public bool hasGoldApple = false;
-    public GameObject hitPoint;
-    public float treeDistance = 2f; //distance player is away from tree for raycast to work
-   
+    //public GameObject hitPoint;
+    public float rayDistance = 1f;    // Distance in front
+    public float rayLong = 4f;
+    public float rayHeight = 2f;      // Height above ground to start
+    public float spawnRange = 10f;    // Editable range for Gizmos
+    private Vector3 hitPoint;
+    private bool hasHit = false;
+    //public float treeDistance = 2f; //distance player is away from tree for raycast to work
+
     public GameObject stumpPrefab;
     public float offest = 1.0f; //offset for raycast 
     public Inventory inventoryScript;
@@ -37,13 +43,20 @@ public class TreeCollect : MonoBehaviour
         {
             //Vector3 origin = hitPoint.transform.position;
             //Vector3 direction = hitPoint.transform.forward;
-            Vector3 forwardPos = transform.position + transform.forward * treeDistance;
-            RaycastHit hit;
+            //Vector3 forwardPos = transform.position + transform.forward * treeDistance;
+            //RaycastHit hit;
+            // Calculate ray origin(slightly in front and above)
+            Vector3 rayOrigin = transform.position + (transform.forward * rayDistance) + (Vector3.up * rayHeight);
 
-            if (Physics.Raycast(forwardPos + Vector3.up * 5f, Vector3.down, out hit, 10f))
+            RaycastHit hit;
+            // Raycast downwards
+            //if (Physics.Raycast(rayOrigin, Vector3.down, out hit, 100f
+            if (Physics.Raycast(rayOrigin, Vector3.down, out hit, 100f))
             {
-                Vector3 spawnpos = hit.point;
-                GameManager.Instance.PlantTree(spawnpos);
+                hitPoint= hit.point;
+                hasHit = true;
+                //Vector3 spawnpos = hit.point;
+                GameManager.Instance.PlantTree(hitPoint);
                 //GameManager.Instance.seedCount--;
                 Debug.Log("planting seed");
                 //inventoryScript.UpdateInventory(2, -1);
@@ -61,12 +74,23 @@ public class TreeCollect : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            float radius = 0.5f;
-            Vector3 origin = hitPoint.transform.position;
-            Vector3 direction = hitPoint.transform.forward;
-            RaycastHit hit;
-            Debug.Log("running tree chop");
-            if (Physics.SphereCast(origin,radius, direction, out hit, treeDistance))
+            //Vector3 rayOrigin = transform.position + (transform.forward * rayLong);
+
+            //RaycastHit hit;
+
+            //float radius = 0.5f;
+            //Vector3 origin = hitPoint.transform.position;
+            //Vector3 direction = hitPoint.transform.forward;
+            //RaycastHit hit;
+            Vector3 forward = transform.TransformDirection(Vector3.forward) * 2.5f;
+            Debug.DrawRay(transform.position + transform.up * 1.5f, forward, Color.green); // Visualize in editor
+
+            //{
+            //    Debug.Log("Hit: " + hit.transform.name);
+            //}
+            //Debug.Log("running tree chop");
+            //if (Physics.Raycast(rayOrigin, Vector3.down, out hit, 100f))
+            if (Physics.Raycast(transform.position + transform.up * 1.5f, forward, out RaycastHit hit, 2.5f))
             {
                 GameObject hitObj = hit.collider.gameObject;
                 GameObject root = hitObj.transform.root.gameObject;
@@ -134,11 +158,26 @@ public class TreeCollect : MonoBehaviour
             //{
             //    Debug.Log("didn't hit a tree");
             //}
-               Debug.DrawRay(transform.position, origin * treeDistance, Color.red, 0.5f);
+               //Debug.DrawRay(transform.position, rayOrigin * rayDistance, Color.yellow, 0.5f);
         }
        // return seedCount;
     }
+    // Show Gizmo in Scene View
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Vector3 rayOrigin = transform.position + (transform.forward * rayDistance) + (Vector3.up * rayHeight);
 
+        // Draw the line being cast
+        Gizmos.DrawLine(rayOrigin, rayOrigin + Vector3.down * 100f);
+
+        // Draw gizmo at the hit point
+        if (hasHit)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(hitPoint, 0.5f);
+        }
+    }
     void SpawnStump(GameObject tree)
     {
         // Capture location/rotation before destroying

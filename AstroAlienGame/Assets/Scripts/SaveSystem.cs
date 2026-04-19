@@ -17,8 +17,8 @@ public static class SaveSystem
         //update SaveData structure with values from runtime
         SaveData data = new SaveData
         {
-            playerLevel = gm.playerLevel,
-            playerPosition = gm.playerPosition,
+            //playerLevel = gm.playerLevel,
+            //playerPosition = gm.playerPosition,
             lastLoginTime = DateTime.UtcNow.Ticks,
             lastOfflineSeconds = gm.lastComputedOfflineSeconds,
             completedDialogues = new List<string>(gm.completedDialogues),

@@ -15,7 +15,7 @@ public class DebugWindow : MonoBehaviour
         StringBuilder sb = new StringBuilder();
 
         sb.AppendLine("=== DEBUG STATE ===");
-        sb.AppendLine("Player Position: " + gm.playerPosition);
+       // sb.AppendLine("Player Position: " + gm.playerPosition);
         sb.AppendLine("Offline Seconds: " + gm.lastComputedOfflineSeconds);
 
 

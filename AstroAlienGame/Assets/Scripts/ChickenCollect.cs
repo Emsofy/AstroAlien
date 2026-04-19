@@ -3,7 +3,12 @@ using UnityEngine;
 public class ChickenCollect : MonoBehaviour
 {
     //public int chickenCount;
-    public GameObject hitPoint;
+    //public GameObject hitPoint;
+    public float rayDistance = 5f;    // Distance in front
+    public float rayHeight = 2f;      // Height above ground to start
+    //public float spawnRange = 10f;    // Editable range for Gizmos
+    private Vector3 hitPoint;
+    //private bool hasHit = false;
     public Inventory inventoryScript;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -21,12 +26,17 @@ public class ChickenCollect : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            float radius = 0.5f;
-            Vector3 origin = hitPoint.transform.position;
-            Vector3 direction = hitPoint.transform.forward;
+            //float radius = 0.5f;
+            //Vector3 origin = hitPoint.transform.position;
+            //Vector3 direction = hitPoint.transform.forward;
+            //RaycastHit hit;
+            // Calculate ray origin (slightly in front and above)
+            Vector3 rayOrigin = transform.position + (transform.forward * rayDistance) + (Vector3.up * rayHeight);
+
             RaycastHit hit;
+            // Raycast downwards
             Debug.Log("running pickup");
-            if (Physics.SphereCast(origin, radius, direction, out hit))
+            if (Physics.Raycast(rayOrigin, Vector3.down, out hit, 100f))
             {
                 GameObject hitObj = hit.collider.gameObject;
                 GameObject root = hitObj.transform.root.gameObject;
@@ -53,12 +63,17 @@ public class ChickenCollect : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(1) && GameManager.Instance.chickenCount>=1)
         {
-            Vector3 forwardPos = transform.position + transform.forward;
+            // Calculate ray origin (slightly in front and above)
+            Vector3 rayOrigin = transform.position + (transform.forward * rayDistance) + (Vector3.up * rayHeight);
+
             RaycastHit hit;
-            if(Physics.Raycast(forwardPos + Vector3.up * 5f, Vector3.down, out hit))
+            // Raycast downwards
+            if (Physics.Raycast(rayOrigin, Vector3.down, out hit, 100f))
             {
-                Vector3 spawnpos = hit.point;
-                GameManager.Instance.PlaceChicken(spawnpos);
+                hitPoint = hit.point;
+                //hasHit = true;
+                //Vector3 spawnpos = hit.point;
+                GameManager.Instance.PlaceChicken(hit.point);
                 GameManager.Instance.RemoveChicken(1);
                // inventoryScript.UpdateInventory(7, -1);
                 Debug.Log("placing chicken");
