@@ -35,10 +35,7 @@ public class DialogueManager : MonoBehaviour
         {
             Instance = this;
         }
-        else
-        {
-            Destroy(gameObject); // Prevent duplicate managers
-        }
+        
     }
     private void Start()
     {
