@@ -13,6 +13,7 @@ public static class SaveSystem
     {
         var gm = GameManager.Instance;
         if (gm == null) return;
+        
 
         //update SaveData structure with values from runtime
         SaveData data = new SaveData
@@ -48,6 +49,10 @@ public static class SaveSystem
         data.eggCount = gm.eggCount;
         data.goldenEggCount = gm.goldenEggCount;
         data.scrapMetalCount = gm.scrapMetalCount;
+
+        //data.currentRepairLevel = gm.currentRepairLevel;
+        data.repairing = gm.repairing;
+        //data.endTimeTicks = gm.endTimeTicks;
         //for (int i = 0; i <= gm.inventory.Length; i++)
         //{
         //    if (i == 0)

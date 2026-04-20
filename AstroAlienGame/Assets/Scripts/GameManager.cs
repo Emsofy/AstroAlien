@@ -52,10 +52,12 @@ public class GameManager : MonoBehaviour
     public int scrapMetalCount;
     //public int[] inventory = new int[8];
 
-
+    [Header("Repairs")]
+    public int currentRepairLevel;
+    public bool repairing;
+    public long endTimeTicks;
 
     public int[] inventory = new int[8];
-
     private void Awake()
     {
         if (Instance != null)
@@ -114,6 +116,7 @@ public class GameManager : MonoBehaviour
         LoadTrees(data);
         LoadChickens(data);
         LoadEggs(data);
+        LoadRepairs(data);
         scrapMetalCount = data.scrapMetalCount;
         goldenAppleCount = data.goldenAppleCount;
         eggCount = data.eggCount;
@@ -122,6 +125,7 @@ public class GameManager : MonoBehaviour
         woodCount = data.woodCount;
         seedCount = data.seedCount;
         chickenCount = data.chickenCount;
+        //RepairSaveData.currentRepairLevel = data.currentRepairLevel;
         unsavedChanges = false; // loaded state is clean
     }
 
@@ -218,6 +222,16 @@ public class GameManager : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         ApplyToScene();
+    }
+
+    public void LoadRepairs(SaveData data)
+    {
+        if (data == null) return;
+        //currentRepairLevel = data.currentRepairLevel;
+        repairing = data.repairing;
+        //endTimeTicks = data.endTimeTicks;
+
+      
     }
 
     public void LoadTrees(SaveData data)
@@ -366,6 +380,9 @@ public class GameManager : MonoBehaviour
         return eggDataList;
     }
     public event Action onInventoryChanged;
+
+   
+  
 
     public void AddScrap(int amount)
     {

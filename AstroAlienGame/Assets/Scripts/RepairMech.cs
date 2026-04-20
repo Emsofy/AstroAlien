@@ -7,7 +7,7 @@ public class RepairMech : MonoBehaviour
     [Header("Repair Bools")]
     public bool hasScrap;
     public bool inRepairZone;
-    public bool repairing;
+   // public bool GameManager.Instance.repairing;
 
     [Header("Scaling Vars")]
     public int baseCost = 2;
@@ -31,14 +31,18 @@ public class RepairMech : MonoBehaviour
 
 
     //NEED PERSISTENCE
-    //endTime
-    //currentRepairLevel
-    //repairing
+    //endTime and current time 
+    //currentRepairLevel int
+    //repairing bool
 
-    /*public void Init (RepairSaveData data)
+    public void Init (SaveData data)
     {
-
-    }*/
+        //endTime = new DateTime(data.endTimeTicks);
+        repairDuration = TimeSpan.FromMinutes(currentRepairTime);
+        //currentRepairLevel = data.currentRepairLevel;
+        GameManager.Instance.repairing = data.repairing;
+        
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -63,16 +67,16 @@ public class RepairMech : MonoBehaviour
         //if says yes/ check cost
         // if have enough/ start repair 
         //repair runs, repair level go up
-        if (inRepairZone && !repairing)
+        if (inRepairZone && !GameManager.Instance.repairing)
         {
             RepairPromptTXT.SetActive(true);
         }
-        if (hasScrap && inRepairZone && Input.GetKeyDown(KeyCode.Y) && !repairing) 
+        if (hasScrap && inRepairZone && Input.GetKeyDown(KeyCode.Y) && !GameManager.Instance.repairing) 
         {
             RepairPromptTXT.SetActive(false);
             CheckCost(currentCost);
         }
-        if (inRepairZone && repairing) //alert player repair is underway
+        if (inRepairZone && GameManager.Instance.repairing) //alert player repair is underway
         {
             repairingTXT.SetActive(true);
         }
@@ -89,7 +93,7 @@ public class RepairMech : MonoBehaviour
             noRepairTXT.SetActive(true);
         }
 
-       if (repairing)
+       if (GameManager.Instance.repairing)
        {
                 TimeSpan remaining = endTime - DateTime.UtcNow; //calculate time left
                 if (remaining < TimeSpan.Zero) 
@@ -139,39 +143,43 @@ public class RepairMech : MonoBehaviour
 
     public void SmallRepair(float repairTime)
     {
-        repairing = true;
+        GameManager.Instance.repairing = true;
         if (inRepairZone) yesRepairTXT.SetActive(true);
 
         repairDuration = TimeSpan.FromMinutes(repairTime); //sets timer
         //will take 2 mins to repair, switch later
         endTime = DateTime.UtcNow.Add(repairDuration); //calculate end time
+       // GameManager.Instance.repairing = true;
+        //GameManager.Instance.endTimeTicks = endTime.Ticks;
       
     }
 
 
     public void CompleteRepair()
     {
-        if (!repairing) return;
+        if (!GameManager.Instance.repairing) return;
 
-        repairing = false;
+        GameManager.Instance.repairing = false;
         
         currentRepairLevel++;
         Debug.Log("repair completed");
+        GameManager.Instance.repairing = false;
+        GameManager.Instance.currentRepairLevel = currentRepairLevel;   
     }
 
 
-    /*public RepairSaveData GetSaveData()
+    public SaveData GetSaveData()
     {
-        return new RepairSaveData
+        return new SaveData
         {
             //NEED PERSISTENCE
             //endTime
             //currentRepairLevel
             //repairing
-            currentRepairLevel = currentRepairLevel,
-            repairing = repairing,
-            endTime = endTime
+           // currentRepairLevel = currentRepairLevel,
+            repairing = GameManager.Instance.repairing,
+            //endTimeTicks = endTime.Ticks
 
         };
-    }*/
+    }
 }

@@ -28,6 +28,14 @@ public class EggSaveData
     public string Eggtag;
 
 }
+//public class RepairSaveData
+//{
+//    public int currentRepairLevel;
+//    public bool repairing;
+//    public long endTimeTicks;
+//}
+
+
 //public class InventorySaveData
 //{
 //}
@@ -50,4 +58,10 @@ public class SaveData
     public int eggCount;
     public int goldenEggCount;
     public int scrapMetalCount;
+
+    //repair data
+    //public int currentRepairLevel;
+    public bool repairing;
+    //public long endTimeTicks;
+
 }
