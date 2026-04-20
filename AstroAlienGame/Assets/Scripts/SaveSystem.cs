@@ -50,9 +50,9 @@ public static class SaveSystem
         data.goldenEggCount = gm.goldenEggCount;
         data.scrapMetalCount = gm.scrapMetalCount;
 
-        //data.currentRepairLevel = gm.currentRepairLevel;
+        data.currentRepairLevel = gm.currentRepairLevel;
         data.repairing = gm.repairing;
-        //data.endTimeTicks = gm.endTimeTicks;
+        data.endTimeTicks = gm.endTimeTicks;
         //for (int i = 0; i <= gm.inventory.Length; i++)
         //{
         //    if (i == 0)

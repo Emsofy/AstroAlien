@@ -37,9 +37,13 @@ public class RepairMech : MonoBehaviour
 
     public void Init (SaveData data)
     {
-        //endTime = new DateTime(data.endTimeTicks);
-        repairDuration = TimeSpan.FromMinutes(currentRepairTime);
-        //currentRepairLevel = data.currentRepairLevel;
+        if (data.endTimeTicks > 0)
+        {
+            endTime = new DateTime(data.endTimeTicks);
+
+        }
+       // repairDuration = TimeSpan.FromMinutes(currentRepairTime);
+        currentRepairLevel = data.currentRepairLevel;
         GameManager.Instance.repairing = data.repairing;
         
     }
@@ -150,8 +154,11 @@ public class RepairMech : MonoBehaviour
         repairDuration = TimeSpan.FromMinutes(repairTime); //sets timer
         //will take 2 mins to repair, switch later
         endTime = DateTime.UtcNow.Add(repairDuration); //calculate end time
-       // GameManager.Instance.repairing = true;
-        //GameManager.Instance.endTimeTicks = endTime.Ticks;
+       
+        GameManager.Instance.endTimeTicks = endTime.Ticks;
+        GameManager.Instance.currentRepairLevel = currentRepairLevel;
+
+        SaveSystem.SaveGame();
       
     }
 
@@ -162,7 +169,8 @@ public class RepairMech : MonoBehaviour
 
         GameManager.Instance.repairing = false;
         
-        currentRepairLevel++;
+        GameManager.Instance.currentRepairLevel++;
+        currentRepairLevel =  GameManager.Instance.currentRepairLevel;
         Debug.Log("repair completed");
         GameManager.Instance.repairing = false;
         GameManager.Instance.currentRepairLevel = currentRepairLevel;   
@@ -177,8 +185,8 @@ public class RepairMech : MonoBehaviour
             //endTime
             //currentRepairLevel
             //repairing
-           // currentRepairLevel = currentRepairLevel,
-            repairing = GameManager.Instance.repairing,
+            //currentRepairLevel = currentRepairLevel,
+            //repairing = GameManager.Instance.repairing,
             //endTimeTicks = endTime.Ticks
 
         };
