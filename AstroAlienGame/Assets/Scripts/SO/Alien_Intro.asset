@@ -16,11 +16,4 @@ MonoBehaviour:
   conversation:
   - Hi!
   - I haven't seen you around...
-  - What?
-  - You need help getting a piece for your ship to go home?
-  - I see...
-  - I would love to help you, but could you do me a favor in return?
-  - I can't go to the forrest realm. I'll burn the whole thing down!!
-  - Would you be able to get an *extra special fruit* for me?
-  - In return, I'll help you get your piece! Deal?
   seen: 0

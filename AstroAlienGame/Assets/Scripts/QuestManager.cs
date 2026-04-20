@@ -23,16 +23,14 @@ public class QuestManager : MonoBehaviour
     {
         if (Instance == null) Instance = this;
     }
+
     private void Start()
     {
-        {
-            LoadData();
-        }
+        LoadData(); 
     }
 
     void Update()
     {
-       
         if (playerIsClose && Input.GetKeyDown(KeyCode.E) && currentFruit != null)
         {
             PickUpFruit();
@@ -43,7 +41,6 @@ public class QuestManager : MonoBehaviour
     {
         PlayerPrefs.SetInt("QuestFinished", Finished ? 1 : 0);
         PlayerPrefs.SetInt("HasFruit", HasFruit);
-        // Note: Saving Lists is complex, so we save the active quest status as an Int
         PlayerPrefs.SetInt("SpecialFruitActive", activeQuests.Contains("SpecialFruit") ? 1 : 0);
         PlayerPrefs.Save();
     }
@@ -52,32 +49,21 @@ public class QuestManager : MonoBehaviour
     {
         Finished = PlayerPrefs.GetInt("QuestFinished", 0) == 1;
         HasFruit = PlayerPrefs.GetInt("HasFruit", 0);
-
         if (PlayerPrefs.GetInt("SpecialFruitActive", 0) == 1)
         {
             if (!activeQuests.Contains("SpecialFruit")) activeQuests.Add("SpecialFruit");
         }
     }
+
     public string DetermineDialogueID(string npcID)
     {
        
-        if (!GameManager.Instance.HasSeenDialogue(npcID))
-        {
-            return npcID;
-           
-        }
-
-        
         if (activeQuests.Contains("SpecialFruit"))
         {
-            
-            if (GameManager.Instance.appleCount >= 1)
-                return "SpecialFruit_Complete";
-
+            if (GameManager.Instance.appleCount >= 1) return "SpecialFruit_Complete";
             return "SpecialFruit_Reminder";
         }
 
-        
         if (Finished)
         {
             return npcID + "_PostQuest";
@@ -86,45 +72,42 @@ public class QuestManager : MonoBehaviour
         return npcID + "_Default";
     }
 
-<<<<<<< HEAD
-    public void OnDialogueComplete(string id)
-    {
-        
-        
-        if (id == "SpecialFruit_Complete")
-=======
-    
     public void OnDialogueComplete(string dialogueID)
     {
-       
-        if (dialogueID == "Alien_Intro")
->>>>>>> parent of e134f85 (Before I break it AGAIN)
+        string cleanID = dialogueID.Trim();
+
+        if (cleanID == "Alien_Intro")
         {
             StartQuest("SpecialFruit");
+            SaveData(); 
         }
-
-       
-        if (dialogueID == "SpecialFruit_Complete")
+        else if (cleanID == "SpecialFruit_Complete")
         {
             GameManager.Instance.RemoveApple(1);
             activeQuests.Remove("SpecialFruit");
-            Finished = true; 
-            GameManager.Instance.SaveGame();
+            Finished = true;
+            SaveData();
+            if (GameManager.Instance != null) GameManager.Instance.SaveGame();
         }
     }
 
+    public void StartQuest(string questName)
+    {
+        if (!activeQuests.Contains(questName))
+        {
+            activeQuests.Add(questName);
+        }
+    }
 
     private void PickUpFruit()
     {
         HasFruit++;
         Destroy(currentFruit);
-        
         GameManager.Instance.AddApple(1);
         playerIsClose = false;
         currentFruit = null;
     }
 
-   
     public void MarkSeen(string ID)
     {
         OnDialogueComplete(ID);
@@ -147,6 +130,4 @@ public class QuestManager : MonoBehaviour
             currentFruit = null;
         }
     }
-
-   
 }
