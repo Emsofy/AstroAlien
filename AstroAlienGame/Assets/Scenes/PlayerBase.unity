@@ -55035,6 +55035,7 @@ GameObject:
   - component: {fileID: 621595506}
   - component: {fileID: 621595505}
   - component: {fileID: 621595504}
+  - component: {fileID: 621595507}
   m_Layer: 0
   m_Name: chikinPen
   m_TagString: Untagged
@@ -55140,6 +55141,38 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 621595502}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &621595507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 621595502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
+  m_SerializedVersion: 0
+  m_AgentTypeID: -1372625422
+  m_CollectObjects: 2
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 3
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: ef99b18bde52acf418751b8cff836404, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1001 &637791414
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -74839,7 +74872,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1032161488
 RectTransform:
   m_ObjectHideFlags: 0
@@ -75486,7 +75519,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1612222690}
   m_HandleRect: {fileID: 1612222689}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -158678,6 +158711,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RepairTrigger
   popUpText: {fileID: 0}
+  savePopUp: {fileID: 0}
+  inSaveZone: 0
 --- !u!65 &2123363355
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -159169,7 +159204,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4239888406284742403
 Transform:
   m_ObjectHideFlags: 0
