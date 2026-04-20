@@ -68428,7 +68428,7 @@ MonoBehaviour:
   dialogueID: BlueAlienConvo
   dialoguePanel: {fileID: 902820909}
   dialogueText: {fileID: 780340195}
-  npcID: BlueAlienConvo
+  currentDialogueID: 
   dialogue:
   - what
   - fuck
@@ -68436,6 +68436,8 @@ MonoBehaviour:
   wordSpeed: 0.03
   playerIsClose: 0
   Bubble: {fileID: 400399626}
+  hasMet: 0
+  Cooldown: 1.5
   currentNPC: {fileID: 1011818388}
 --- !u!114 &1011818388
 MonoBehaviour:
@@ -68457,6 +68459,7 @@ MonoBehaviour:
     idIfRequirementMet: 
     idIfRequirementNotMet: 
     idAfterQuestFinished: 
+    hasMet: 0
   playerIsClose: 0
 --- !u!135 &1011818389
 SphereCollider:
@@ -74277,7 +74280,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1612222690}
   m_HandleRect: {fileID: 1612222689}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -80076,6 +80079,7 @@ MonoBehaviour:
     idIfRequirementMet: SpecialFruit_Complete
     idIfRequirementNotMet: SpeicalFruit_Reminder
     idAfterQuestFinished: Alien_PostQuest
+    hasMet: 0
   playerIsClose: 0
 --- !u!114 &1243367290
 MonoBehaviour:
@@ -80094,12 +80098,14 @@ MonoBehaviour:
   dialogueID: Alien_Intro
   dialoguePanel: {fileID: 1918041319}
   dialogueText: {fileID: 560440694}
-  npcID: Alien_Intro
+  currentDialogueID: 
   dialogue: []
   index: 0
   wordSpeed: 0.03
   playerIsClose: 0
   Bubble: {fileID: 400399626}
+  hasMet: 0
+  Cooldown: 1.5
   currentNPC: {fileID: 1243367288}
 --- !u!114 &1243367291
 MonoBehaviour:
@@ -101249,8 +101255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuestManager
   Manager: {fileID: 1243367290}
-  activeQuests:
-  - SpecialFruit
+  activeQuests: []
   Finished: 0
   isDialogueActive: 0
   playerIsClose: 0

@@ -1,7 +1,5 @@
 using UnityEngine;
 
-
-// 1. This defines the "list" of options
 public enum ItemType { Apple, Wood, Seed, Egg, GoldenEgg, Scrap }
 
 [System.Serializable]
@@ -23,7 +21,7 @@ public class NPC : MonoBehaviour
 {
     public string npcID;
     public DialogueStateRule questLogic;
-    [HideInInspector] public bool playerIsClose;
+    public bool playerIsClose;
     private void Start()
     {
         DialogueManager.Instance.Bubble.enabled = false;

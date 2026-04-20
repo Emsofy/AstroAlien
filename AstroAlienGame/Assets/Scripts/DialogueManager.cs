@@ -32,17 +32,14 @@ public class DialogueManager : MonoBehaviour
 
     public NPC currentNPC;
 
-    private void Awake()
-    {
-        if (Instance == null) Instance = this;
-    }
 
     private void Start()
     {
-        if (Quest == null) Quest = FindAnyObjectByType<QuestManager>();
+        //if (Quest == null) Quest = FindAnyObjectByType<QuestManager>();
         dialoguePanel.SetActive(false);
   
         hasMet = PlayerPrefs.GetInt("HasMetAlien", 0) == 1;
+       
     }
 
     private void Update()
@@ -62,9 +59,7 @@ public class DialogueManager : MonoBehaviour
 
     public void Begin()
     {
-        if (currentNPC != null)
-        {
-            
+        
             if (!hasMet)
             {
                 currentDialogueID = "Alien_Intro";
@@ -87,16 +82,19 @@ public class DialogueManager : MonoBehaviour
             {
                 Debug.LogError($"Dialogue ID {dialogueID} not found");
             }
-        }
+        
     }
 
     public void StartDialogue(string[] newDialogue, string id)
     {
         currentDialogueID = id;
         dialogue = newDialogue;
-        index = -1;
+        index = 0;
         dialoguePanel.SetActive(true);
-        NextLine(); 
+
+        if (typingCoroutine != null) StopCoroutine(typingCoroutine);
+        dialogueText.text = "";
+        typingCoroutine = StartCoroutine(Typing());
     }
 
     public void NextLine()
@@ -110,8 +108,8 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
-            // End conversation
-            if (QuestManager.Instance != null) QuestManager.Instance.MarkSeen(currentDialogueID);
+            // End convo
+            if (QuestManager.Instance != null) 
             OnDialogueComplete(currentDialogueID);
             zeroText();
         }
@@ -119,20 +117,26 @@ public class DialogueManager : MonoBehaviour
 
     public void OnDialogueComplete(string id)
     {
-        string cleanID = id.Trim();
-        Debug.Log("Finished Dialogue ID: " + cleanID);
-
-        if (cleanID == "Alien_Intro")
+        if(id== "Alien_Intro")
         {
             hasMet = true;
-            PlayerPrefs.SetInt("HasMetAlien", 1);
+            PlayerPrefs.SetInt("HasMetAlein", 1);
             PlayerPrefs.Save();
 
-            if (!QuestManager.Instance.activeQuests.Contains("SpecialFruit"))
+            if(!QuestManager.Instance.activeQuests.Contains("SpecialFruit"))
             {
                 QuestManager.Instance.activeQuests.Add("SpecialFruit");
+                QuestManager.Instance.SaveData();
             }
-            Debug.Log("Intro finished, quest startted.");
+        }
+        QuestManager.Instance.MarkSeen(currentDialogueID);
+        if (id == "SpecialFruit_Complete")
+        {
+            GameManager.Instance.RemoveApple(1);
+            QuestManager.Instance.activeQuests.Remove("SpecialFruit");
+            QuestManager.Instance.Finished = true;
+            hasMet = true;
+            QuestManager.Instance.MarkSeen(currentDialogueID);
         }
     }
 
@@ -165,10 +169,8 @@ public class DialogueManager : MonoBehaviour
             if (Bubble != null) Bubble.enabled = true;
             currentNPC = other.GetComponent<NPC>();
 
-            if (currentNPC == null)
-            {
-                currentNPC = GetComponentInParent<NPC>();
-            }
+            if (currentNPC == null)currentNPC = GetComponentInParent<NPC>();
+            
         }
     }
 
