@@ -9,8 +9,6 @@ public class DialogueStateRule
 {
     public string requiredQuest;
     
-
-    // 2. This is the actual variable that shows up in the Inspector
     public ItemType itemToCheck;
 
     public int amountNeeded = 1;
@@ -30,19 +28,19 @@ public class NPC : MonoBehaviour
     }
     public string GetCurrentDialogueID()
     {
-        // 1. Check if quest is ACTIVE first
+        
         if (QuestManager.Instance.activeQuests.Contains(questLogic.requiredQuest))
         {
             return HasEnoughItems() ? questLogic.idIfRequirementMet : questLogic.idIfRequirementNotMet;
         }
 
-        // 2. Check if quest is FINISHED second
+        
         if (QuestManager.Instance.Finished) return questLogic.idAfterQuestFinished;
 
-        // 3. DEFAULT to Intro
+        
         return npcID;
     }
-    // This checks the GameManager based on what you picked in the dropdown
+   
     private bool HasEnoughItems()
     {
         switch (questLogic.itemToCheck)
@@ -51,30 +49,11 @@ public class NPC : MonoBehaviour
             case ItemType.Wood: return GameManager.Instance.woodCount >= questLogic.amountNeeded;
             case ItemType.Seed: return GameManager.Instance.seedCount >= questLogic.amountNeeded;
             case ItemType.Egg: return GameManager.Instance.eggCount >= questLogic.amountNeeded;
-            case ItemType.GoldenEgg: return GameManager.Instance.goldenEggCount >= questLogic.amountNeeded; // Added this!
+            case ItemType.GoldenEgg: return GameManager.Instance.goldenEggCount >= questLogic.amountNeeded; 
             case ItemType.Scrap: return GameManager.Instance.scrapMetalCount >= questLogic.amountNeeded;
             default: return false;
         }
     }
 
-    /*private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            playerIsClose = true;
-            DialogueManager.Instance.Bubble.enabled = true;
-            DialogueManager.Instance.currentNPC = this;
-            DialogueManager.Instance.playerIsClose = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            DialogueManager.Instance.Bubble.enabled = false;
-            playerIsClose = false;
-            DialogueManager.Instance.playerIsClose = false;
-        }
-    }*/
+    
 }

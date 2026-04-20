@@ -26,7 +26,7 @@ public class QuestManager : MonoBehaviour
 
     void Update()
     {
-        // Handle Fruit Pickup
+       
         if (playerIsClose && Input.GetKeyDown(KeyCode.E) && currentFruit != null)
         {
             PickUpFruit();
@@ -34,54 +34,50 @@ public class QuestManager : MonoBehaviour
         }
     }
 
-    // --- NEW: THE ID DECIDER ---
-    // This removes the hardcoding from DialogueManager. 
-    // It checks GameManager to see what has been seen/collected.
+    
     public string DetermineDialogueID(string npcID)
     {
-        // 1. Check if we have ever finished the intro for this NPC
+       
         if (!GameManager.Instance.HasSeenDialogue(npcID))
         {
             return npcID;
            
         }
 
-        // 2. Check for Quest Progress
+        
         if (activeQuests.Contains("SpecialFruit"))
         {
-            // Check GameManager inventory instead of local fruitCount
+            
             if (GameManager.Instance.appleCount >= 1)
                 return "SpecialFruit_Complete";
 
             return "SpecialFruit_Reminder";
         }
 
-        // 3. Post-Quest State
+        
         if (Finished)
         {
             return npcID + "_PostQuest";
         }
 
-        // 4. Default if nothing else matches
         return npcID + "_Default";
     }
 
-    // --- NEW: THE CONSEQUENCE HANDLER ---
-    // This is called by DialogueManager.NextLine() when a conversation ends.
+    
     public void OnDialogueComplete(string dialogueID)
     {
-        // If the intro dialogue finishes, START the quest
+       
         if (dialogueID == "Alien_Intro")
         {
             StartQuest("SpecialFruit");
         }
 
-        // If the success dialogue finishes, FINISH the quest
+       
         if (dialogueID == "SpecialFruit_Complete")
         {
             GameManager.Instance.RemoveApple(1);
             activeQuests.Remove("SpecialFruit");
-            Finished = true; // This triggers the "ID After Quest Finished" state
+            Finished = true; 
             GameManager.Instance.SaveGame();
         }
     }
@@ -91,13 +87,13 @@ public class QuestManager : MonoBehaviour
     {
         HasFruit++;
         Destroy(currentFruit);
-        // Use GameManager to track items so they persist through saves
+        
         GameManager.Instance.AddApple(1);
         playerIsClose = false;
         currentFruit = null;
     }
 
-    // Legacy support for your MarkSeen call
+   
     public void MarkSeen(string ID)
     {
         OnDialogueComplete(ID);

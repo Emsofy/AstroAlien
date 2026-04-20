@@ -43,7 +43,7 @@ public class DialogueManager : MonoBehaviour
         
         if (Quest == null) Quest = FindAnyObjectByType<QuestManager>();
 
-        // Ensure panel starts off
+        
         dialoguePanel.SetActive(false);
     }
 
@@ -51,8 +51,8 @@ public class DialogueManager : MonoBehaviour
     {
         if (playerIsClose && Input.GetKeyUp(KeyCode.E) && !isTyping)
         {
-            // nextActionTime = Time.time + cooldown; // Prevents double-firing
-            dialogueID = "Alien_Intro";
+            
+
             if (dialoguePanel.activeInHierarchy)
             {
                 NextLine();
@@ -64,7 +64,7 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-   public NPC currentNPC; // Set this via the NPC's OnTriggerEnter
+   public NPC currentNPC;
 
     public void Begin()
     {
@@ -73,24 +73,22 @@ public class DialogueManager : MonoBehaviour
     
         var finalEntry = database.GetDialogue(dialogueID);
 
-        if (finalEntry == null)
+       if (finalEntry != null)
         {
-            return;
+            AnyDialogueRunning = true;
+            dialogue = finalEntry.conversation;
+            index = -1;
+
+            dialoguePanel.SetActive(true);
+
+            dialogueText.text = dialogue[index];
         }
-
-        AnyDialogueRunning = true;
-        Quest.isDialogueActive = true;
-        dialogue = finalEntry.conversation;
-
-        index = -1; // This ensures we start at the beginning
-        dialoguePanel.SetActive(true);
-        NextLine();
     }
     public void NextLine()
     {
-        if (index < dialogue.Length - 1)
+        index++;
+        if (index < dialogue.Length)
         {
-            index++;
             dialogueText.text = "";
             if (typingCoroutine != null) StopCoroutine(typingCoroutine);
             typingCoroutine = StartCoroutine(Typing());
