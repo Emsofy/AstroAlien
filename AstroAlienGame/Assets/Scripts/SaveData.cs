@@ -18,7 +18,7 @@ public class ChickenSaveData
     public string id;
     public Vector3 position;
     public long nextEggTicks;
-    public bool eggLayed;
+   // public bool eggLayed;
 }
 [Serializable]
 public class EggSaveData

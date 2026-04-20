@@ -35,7 +35,7 @@ public class ChickenMov : MonoBehaviour
     [Header("Bools")]
     //public bool isIdle = false;
     public bool isWalking = false;
-    public bool eggLayed = false;
+    //public bool eggLayed = false;
 
     [Header("Egg Laying")]
     //public GameObject eggPrefab;
@@ -57,7 +57,7 @@ public class ChickenMov : MonoBehaviour
     {
         id = data.id;
         transform.position = data.position;
-        eggLayed |= data.eggLayed;
+        //eggLayed |= data.eggLayed;
         nextEggTime = new DateTime(data.nextEggTicks);
         layDuration = TimeSpan.FromMinutes(3);
         //Debug.Log("Running chicken init");
@@ -76,8 +76,10 @@ public class ChickenMov : MonoBehaviour
         {
             agent.Warp(hit.position);
         }
-        Debug.Log("Running chicken init");
 
+        OfflineEggs();
+        Debug.Log("Running chicken init");
+        Debug.Log("Active eggs count: " + GameManager.Instance.activeEggs.Count);
 
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -104,10 +106,25 @@ public class ChickenMov : MonoBehaviour
         //Clamping so no neg times
         if (remaining < TimeSpan.Zero)
             remaining = TimeSpan.Zero;
-        if (remaining <= TimeSpan.Zero && !eggLayed)
+        if (remaining <= TimeSpan.Zero)
         {
             LayEgg();
-            eggLayed = true;
+            //eggLayed = true;
+            nextEggTime = DateTime.UtcNow.Add(layDuration);
+        }
+        if (remaining <= TimeSpan.Zero)
+        {
+            bool success = TryLayEgg();
+
+            if (success)
+            {
+                nextEggTime = DateTime.UtcNow.Add(layDuration);
+            }
+            else
+            {
+                // retry sooner if blocked
+                nextEggTime = DateTime.UtcNow.AddSeconds(10);
+            }
         }
         switch (currentState)
         {
@@ -140,7 +157,18 @@ public class ChickenMov : MonoBehaviour
         //    }
         //}
     }
+    bool TryLayEgg()
+    {
+        Vector3 spawnPos = transform.position + transform.right * UnityEngine.Random.Range(-0.5f, 0.5f);
 
+        GameObject egg = GameManager.Instance.SpawnEgg(spawnPos);
+
+        if (egg == null)
+            return false;
+
+        Debug.Log("Egg laid");
+        return true;
+    }
     void UpdatePatrol()
     {
         // If we've reached destination
@@ -190,22 +218,52 @@ public class ChickenMov : MonoBehaviour
 
     void LayEgg()
     {
-        if (!eggLayed)
+       
+        Vector3 spawnPos = transform.position + transform.right * UnityEngine.Random.Range(-0.5f, 0.5f);
+        GameObject egg = GameManager.Instance.SpawnEgg(spawnPos);
+        Debug.Log("Egg laid");
+        if (egg == null)
         {
-            Vector3 spawnPos = transform.position + transform.right * UnityEngine.Random.Range(-0.5f, 0.5f);
-            GameManager.Instance.SpawnEgg(spawnPos);
-
-            //reset timer 
-            //layDuration = TimeSpan.FromMinutes(4);
-            //nextEggTime = DateTime.UtcNow.Add(layDuration);
-            SaveSystem.SaveGame();
+            // world is full don't reset timer too aggressively
+            Debug.Log("Egg not spawned — limit reached");
+            return;
         }
-        else
-        {
-            Debug.Log("Egg already layed");
-            //return;
-        }
+        //reset timer 
+        //layDuration = TimeSpan.FromMinutes(4);
+        //nextEggTime = DateTime.UtcNow.Add(layDuration);
+        SaveSystem.SaveGame();
+       
+        //else
+        //{
+        //    Debug.Log("Egg already layed");
+        //    //return;
+        //}
     }    
+    void OfflineEggs()
+    {
+        DateTime now = DateTime.UtcNow;
+
+        if (now < nextEggTime)
+            return;
+
+        TimeSpan timePassed = now - nextEggTime;
+
+        int eggsToSpawn = 1 + (int)(timePassed.TotalSeconds / layDuration.TotalSeconds);
+        eggsToSpawn = Mathf.Min(eggsToSpawn, 10);
+        Debug.Log("Offline eggs: " + eggsToSpawn);
+
+        for (int i = 0; i < eggsToSpawn; i++)
+        {
+            bool success = TryLayEgg();
+
+            if (!success)
+            {
+                // stop if world is full
+                break;
+            }
+        }
+        nextEggTime = DateTime.UtcNow.Add(layDuration);
+    }
     //void UpdateFollow()
     //{
     //    //if player comes up to chicken and presses f the chicken begins to follow until f is pressed again
@@ -241,7 +299,7 @@ public class ChickenMov : MonoBehaviour
             id = id,
             position = transform.position,
             nextEggTicks = nextEggTime.Ticks,
-            eggLayed = eggLayed,
+            //eggLayed = eggLayed,
 
         };
        

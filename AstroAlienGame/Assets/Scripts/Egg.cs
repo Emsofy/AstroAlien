@@ -14,6 +14,13 @@ public class Egg : MonoBehaviour
         Eggtag = data.Eggtag;
         //SetEgg();
     }
+    void OnDestroy()
+    {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.activeEggs.Remove(this);
+        }
+    }
     public void StartNew(Vector3 position)
     {
         id =  Guid.NewGuid().ToString();

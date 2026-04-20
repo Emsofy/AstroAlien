@@ -116,7 +116,7 @@ public class TreeGrow : MonoBehaviour
         }
         else
         {
-            Debug.Log("trees already tagged");
+            //Debug.Log("trees already tagged");
         }
         
         

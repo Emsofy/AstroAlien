@@ -28,7 +28,7 @@ public class BaseChicks : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         ChangeState(AIState.Patrol);
         //anim = GetComponent<Animator>();
-        Debug.Log("On NavMesh: " + agent.isOnNavMesh);
+        //Debug.Log("On NavMesh: " + agent.isOnNavMesh);
         idleTimer = UnityEngine.Random.Range(1f, 3f);
     }
 

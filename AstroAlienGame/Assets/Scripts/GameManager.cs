@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     public GameObject eggPrefab;
     //public GameObject goldEggPrefab;
     public List<Egg> activeEggs = new List<Egg>();
+    public int maxEggsInWorld = 20;
 
     [Header("Dialogue")]
     public HashSet<string> completedDialogues = new HashSet<string>();
@@ -69,11 +70,12 @@ public class GameManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        LoadGame();
+        //LoadGame();
         
     }
     public void Start()
     {
+        LoadGame();
         chickenScript = Player.GetComponent<ChickenCollect>();
         treeScript = Player.GetComponent<TreeCollect>();
 
@@ -335,18 +337,26 @@ public class GameManager : MonoBehaviour
     //    SpawnEgg(position, eggNew);
     //}
 
-    public void SpawnEgg(Vector3 position)
+    public GameObject SpawnEgg(Vector3 position)
     {
+        CleanEggList();
+        if (activeEggs.Count >= maxEggsInWorld)
+        {
+            //Debug.Log("Egg limit reached — cannot spawn");
+            return null;
+        }
+
         GameObject obj = Instantiate(eggPrefab, position, Quaternion.identity);
         Egg eggNew = obj.GetComponent<Egg>();
         eggNew.StartNew(position);
         activeEggs.Add(eggNew);
         SaveSystem.SaveGame();
+        return obj;
 
     }
     public void LoadEggs(SaveData data)
     {
-        Debug.Log("trying to load egg");
+       // Debug.Log("trying to load egg");
         foreach (var egg in activeEggs)
         {
             if(egg != null)
@@ -366,6 +376,7 @@ public class GameManager : MonoBehaviour
         }
 
         Debug.Log("Loaded: " +  data.eggs.Count + "eggs");
+
     }
     public List<EggSaveData> GetEggSaveData()
     {
@@ -381,8 +392,11 @@ public class GameManager : MonoBehaviour
     }
     public event Action onInventoryChanged;
 
-   
-  
+    void CleanEggList()
+    {
+        activeEggs.RemoveAll(egg => egg == null);
+    }
+
 
     public void AddScrap(int amount)
     {

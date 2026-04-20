@@ -135,9 +135,12 @@ void Start()
         GameObject root = collision.transform.root.gameObject;
         if (root.CompareTag("Egg"))
         {
-            Egg egg = root.GetComponent<Egg>(); 
             GameManager.Instance.AddEgg(1);
-            GameManager.Instance.activeEggs.Remove(egg);
+            Egg egg = root.GetComponent<Egg>(); 
+            if (egg != null)
+            {
+                GameManager.Instance.activeEggs.Remove(egg);
+            }
             Destroy(root.gameObject);
             // GameManager.Instance.activeEggs.Remove(collision.gameObject);
             //SaveSystem.SaveGame();
@@ -145,9 +148,12 @@ void Start()
         }
         if (root.CompareTag("GoldenEgg"))
         {
-            Egg egg = root.GetComponent<Egg>();
             GameManager.Instance.AddGoldenEgg(1);
-            GameManager.Instance.activeEggs.Remove(egg);
+            Egg egg = root.GetComponent<Egg>();
+            if (egg != null)
+            {
+                GameManager.Instance.activeEggs.Remove(egg);
+            }
             Destroy(root.gameObject);
             //GameManager.Instance.activeEggs.Remove(collision.gameObject);
             // SaveSystem.SaveGame();
