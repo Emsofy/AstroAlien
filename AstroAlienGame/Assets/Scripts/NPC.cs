@@ -15,6 +15,8 @@ public class DialogueStateRule
     public string idIfRequirementMet;
     public string idIfRequirementNotMet;
     public string idAfterQuestFinished;
+
+    public bool hasMet = false;
 }
 
 public class NPC : MonoBehaviour

@@ -26,32 +26,55 @@ public class DialogueManager : MonoBehaviour
     public bool playerIsClose;
     private Coroutine typingCoroutine;
     public TextMeshProUGUI Bubble;
+    public bool hasMet = false;
 
-    public string currentDialogueID;
 
-    [Header("CoolDown")]
-    public float Cooldown = 1.5f;
-    private float nextInteractTime = 0f;
-    
 
     public static bool AnyDialogueRunning = false;
 
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        
+    }
     private void Start()
     {
-        //if (Quest == null) Quest = FindAnyObjectByType<QuestManager>();
+        
+        if (Quest == null) Quest = FindAnyObjectByType<QuestManager>();
+
         
         dialoguePanel.SetActive(false);
+        hasMet = PlayerPrefs.GetInt("HasMetAlien", 0) == 1;
+    }
+    public void SaveMetStatus()
+    {
+        hasMet = true;
+        PlayerPrefs.SetInt("HasMetAlien", 1);
+        PlayerPrefs.Save();
     }
 
     private void Update()
     {
+<<<<<<< HEAD
+        currentDialogueID = QuestManager.Instance.DetermineDialogueID(currentNPC.npcID);
+
+        //var finalEntry = database.GetDialogue(currentDialogueID);
+
         if (playerIsClose && Input.GetKeyUp(KeyCode.E) && !isTyping && Time.time > nextInteractTime)
+=======
+        if (playerIsClose && Input.GetKeyUp(KeyCode.E) && !isTyping)
+>>>>>>> parent of e134f85 (Before I break it AGAIN)
         {
+            
+
             if (dialoguePanel.activeInHierarchy)
             {
                 NextLine();
             }
-            else
+            else if (!AnyDialogueRunning)
             {
                 Begin();
             }
@@ -59,6 +82,7 @@ public class DialogueManager : MonoBehaviour
     }
 
    public NPC currentNPC;
+<<<<<<< HEAD
     public void StartDialogue(string[] newDialogue, string id)
     {
         currentDialogueID = id;
@@ -68,54 +92,108 @@ public class DialogueManager : MonoBehaviour
         NextLine();
         // if (typingCoroutine != null) StopCoroutine(typingCoroutine);
         //dialogueText.text = "";
-        QuestManager.Instance.MarkSeen(currentDialogueID);
+        //QuestManager.Instance.MarkSeen(currentDialogueID);
         //typingCoroutine = StartCoroutine(Typing());
-        Debug.Log("hit");
     }
     public void Begin()
     {
-        var finalEntry = database.GetDialogue(dialogueID);
-        dialogueID = currentNPC.GetCurrentDialogueID();
-    
-
-       if (finalEntry != null)
+        if (currentNPC != null)
         {
-        StartDialogue(finalEntry.conversation, dialogueID);
-            AnyDialogueRunning = true;
-        }
-       
+            if (hasMet == false)
+            {
+                currentDialogueID = "Alien_Intro";
+            }
+            else
+            {
+                // currentDialogueID = QuestManager.Instance.DetermineDialogueID(currentNPC.npcID);
+                currentDialogueID = currentNPC.GetCurrentDialogueID();
+            }
+
+            dialogueID = currentDialogueID;
+
+            var finalEntry = database.GetDialogue(dialogueID);
+            if (finalEntry != null)
+            {
+                StartDialogue(finalEntry.conversation, dialogueID);
+                AnyDialogueRunning = true;
+            }
+
             /*if (index >= 0 && index < dialogue.Length)
             {
                 dialogueText.text = dialogue[index];
             }
+=======
+
+    public void Begin()
+    {
+        
+        dialogueID = currentNPC.GetCurrentDialogueID();
+    
+        var finalEntry = database.GetDialogue(dialogueID);
+
+       if (finalEntry != null)
+        {
+>>>>>>> parent of e134f85 (Before I break it AGAIN)
             AnyDialogueRunning = true;
             dialogue = finalEntry.conversation;
-            //index = -1;
+            index = -1;
 
-            dialoguePanel.SetActive(true);*/
+            dialoguePanel.SetActive(true);
 
-        
+<<<<<<< HEAD
+
+=======
+            dialogueText.text = dialogue[index];
+>>>>>>> parent of e134f85 (Before I break it AGAIN)
+        }
     }
+
     public void NextLine()
     {
-
+<<<<<<< HEAD
         if (index < dialogue.Length - 1)
+=======
+        index++;
+        if (index < dialogue.Length)
+>>>>>>> parent of e134f85 (Before I break it AGAIN)
         {
-            index++;
             dialogueText.text = "";
-
-
             if (typingCoroutine != null) StopCoroutine(typingCoroutine);
             typingCoroutine = StartCoroutine(Typing());
-
         }
-       else
+        else
         {
-            if (QuestManager.Instance != null)
-            {
-                QuestManager.Instance.MarkSeen(currentDialogueID);
-            }
+<<<<<<< HEAD
+            // 1. Tell both managers the dialogue ended
+            if (QuestManager.Instance != null) QuestManager.Instance.MarkSeen(currentDialogueID);
+
+            // 2. Run the logic to flip the 'hasMet' switch
+            OnDialogueComplete(currentDialogueID);
+
+=======
+            QuestManager.Instance.MarkSeen(dialogueID);
+>>>>>>> parent of e134f85 (Before I break it AGAIN)
             zeroText();
+        }
+    }
+
+    // Ensure this is INSIDE the DialogueManager class
+    public void OnDialogueComplete(string id)
+    {
+        string cleanID = id.Trim();
+        Debug.Log("Finished Dialogue ID: " + cleanID);
+
+        if (cleanID == "Alien_Intro")
+        {
+            hasMet = true;
+            PlayerPrefs.SetInt("HasMetAlien", 1); // Saves so it stays true after restart
+            PlayerPrefs.Save();
+
+            // Start the quest
+            if (!QuestManager.Instance.activeQuests.Contains("SpecialFruit"))
+                QuestManager.Instance.activeQuests.Add("SpecialFruit");
+
+            Debug.Log("Intro finished, quest started.");
         }
     }
 
@@ -134,10 +212,7 @@ public class DialogueManager : MonoBehaviour
     {
         AnyDialogueRunning = false;
         dialogueText.text = "";
-        index = -1;
-
-        nextInteractTime = Time.time + Cooldown;
-
+        index = 0;
         if (dialoguePanel != null) dialoguePanel.SetActive(false);
         if (Quest != null) Quest.isDialogueActive = false;
     }
