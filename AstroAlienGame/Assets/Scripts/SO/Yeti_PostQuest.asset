@@ -10,14 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c90dc33c8bb5759409643c4f177607be, type: 3}
-  m_Name: Yeti_Intro
+  m_Name: Yeti_PostQuest
   m_EditorClassIdentifier: Assembly-CSharp::DialogueEventSO
-  dialogueID: Yeti_Intro
+  dialogueID: Yeti_PostQuest
   conversation:
-  - Hey there, little guy.
-  - Pieces? Ah! I picked one up on my morning walk today.
-  - I was looking around for chickens, but I hear they're only in the fire realm.
-  - Would you mind getting some of those FAMOUS golden eggs for me?
-  - I hear they're great fried.
-  - Then, I promise, I'll give you the piece I'm hanging onto.
+  - Thank you so much for your help.
+  - Here's your piece, as promised.
   seen: 0
