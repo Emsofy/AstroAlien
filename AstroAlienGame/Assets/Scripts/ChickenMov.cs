@@ -194,6 +194,10 @@ public class ChickenMov : MonoBehaviour
         {
             Vector3 spawnPos = transform.position + transform.right * UnityEngine.Random.Range(-0.5f, 0.5f);
             GameManager.Instance.SpawnEgg(spawnPos);
+
+            //reset timer 
+            //layDuration = TimeSpan.FromMinutes(4);
+            //nextEggTime = DateTime.UtcNow.Add(layDuration);
             SaveSystem.SaveGame();
         }
         else

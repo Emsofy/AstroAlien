@@ -78866,7 +78866,7 @@ MonoBehaviour:
   rayLong: 4
   rayHeight: 2
   spawnRange: 10
-  stumpPrefab: {fileID: 0}
+  stumpPrefab: {fileID: 2805816040252804957, guid: 0e01c10720891934cb2245c5c4a297ae, type: 3}
   offest: 1
   inventoryScript: {fileID: 1410891216}
 --- !u!114 &1410891227
@@ -95528,14 +95528,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   treePrefab: {fileID: 677423538106678710, guid: e4f499a87a969204f8dfd15d0ef26117, type: 3}
   activeTrees: []
-  treeScript: {fileID: 0}
+  treeScript: {fileID: 1410891226}
   chickenPrefab: {fileID: 3728843956573097259, guid: 1f88301bdfca04844962a9443b07021c, type: 3}
   activeChicks: []
-  eggPrefab: {fileID: 0}
+  eggPrefab: {fileID: 1242237823176529161, guid: c6cf97d0de8c7d94d859293e6ed84371, type: 3}
   activeEggs: []
   lastComputedOfflineSeconds: 0
   unsavedChanges: 0
-  chickenScript: {fileID: 0}
+  chickenScript: {fileID: 1410891227}
   Player: {fileID: 1410891214}
   chickenCount: 0
   seedCount: 0
