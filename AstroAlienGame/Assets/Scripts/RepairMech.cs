@@ -78,6 +78,7 @@ public class RepairMech : MonoBehaviour
         }
         if (inRepairZone && GameManager.Instance.repairing) //alert player repair is underway
         {
+            noRepairTXT.SetActive(false);
             repairingTXT.SetActive(true);
         }
         if (hasScrap && inRepairZone && Input.GetKeyDown(KeyCode.N))
