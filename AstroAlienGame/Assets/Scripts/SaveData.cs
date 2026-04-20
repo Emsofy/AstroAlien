@@ -60,8 +60,8 @@ public class SaveData
     public int scrapMetalCount;
 
     //repair data
-    //public int currentRepairLevel;
+    public int currentRepairLevel;
     public bool repairing;
-    //public long endTimeTicks;
+    public long endTimeTicks;
 
 }

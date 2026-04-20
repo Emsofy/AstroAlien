@@ -231,9 +231,9 @@ public class GameManager : MonoBehaviour
     public void LoadRepairs(SaveData data)
     {
         if (data == null) return;
-        //currentRepairLevel = data.currentRepairLevel;
+        currentRepairLevel = data.currentRepairLevel;
         repairing = data.repairing;
-        //endTimeTicks = data.endTimeTicks;
+        endTimeTicks = data.endTimeTicks;
 
       
     }
