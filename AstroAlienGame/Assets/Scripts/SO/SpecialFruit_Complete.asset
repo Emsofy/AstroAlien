@@ -15,4 +15,5 @@ MonoBehaviour:
   dialogueID: SpecialFruit_Complete
   conversation:
   - Thanks for the fruit!
+  - I really appriciate all your hard work.
   seen: 0

@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueEventSO
   dialogueID: Alien_PostQuest
   conversation:
+  - Thanks again!
   - That piece is coming right up!
+  - Here you go!
   seen: 0

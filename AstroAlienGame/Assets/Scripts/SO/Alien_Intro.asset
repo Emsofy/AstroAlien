@@ -16,4 +16,13 @@ MonoBehaviour:
   conversation:
   - Hi!
   - I haven't seen you around...
+  - Welcome to our planet!
+  - What? You crash landed?!
+  - Of course I could help you get your <b>ship piece</b> back.
+  - I have a favor to ask in return.
+  - I can't go into the forrest, I'd accidently burn the place to the ground!
+  - Could you get me a golden apple?
+  - All you have to do is plant some trees. There's a chance one of the fruit will
+    be extra special!
+  - Then, I'll help you get your peice so you could go home! Deal?
   seen: 0
