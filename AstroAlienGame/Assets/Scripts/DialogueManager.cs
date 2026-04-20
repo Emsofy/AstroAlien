@@ -27,37 +27,31 @@ public class DialogueManager : MonoBehaviour
     private Coroutine typingCoroutine;
     public TextMeshProUGUI Bubble;
 
+    public string currentDialogueID;
+
+    [Header("CoolDown")]
+    public float Cooldown = 1.5f;
+    private float nextInteractTime = 0f;
+    
 
     public static bool AnyDialogueRunning = false;
 
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        
-    }
     private void Start()
     {
-        
-        if (Quest == null) Quest = FindAnyObjectByType<QuestManager>();
-
+        //if (Quest == null) Quest = FindAnyObjectByType<QuestManager>();
         
         dialoguePanel.SetActive(false);
     }
 
     private void Update()
     {
-        if (playerIsClose && Input.GetKeyUp(KeyCode.E) && !isTyping)
+        if (playerIsClose && Input.GetKeyUp(KeyCode.E) && !isTyping && Time.time > nextInteractTime)
         {
-            
-
             if (dialoguePanel.activeInHierarchy)
             {
                 NextLine();
             }
-            else if (!AnyDialogueRunning)
+            else
             {
                 Begin();
             }
@@ -65,37 +59,62 @@ public class DialogueManager : MonoBehaviour
     }
 
    public NPC currentNPC;
-
+    public void StartDialogue(string[] newDialogue, string id)
+    {
+        currentDialogueID = id;
+        dialogue = newDialogue;
+        index = -1;
+        dialoguePanel.SetActive(true);
+        NextLine();
+        // if (typingCoroutine != null) StopCoroutine(typingCoroutine);
+        //dialogueText.text = "";
+        QuestManager.Instance.MarkSeen(currentDialogueID);
+        //typingCoroutine = StartCoroutine(Typing());
+        Debug.Log("hit");
+    }
     public void Begin()
     {
-        
+        var finalEntry = database.GetDialogue(dialogueID);
         dialogueID = currentNPC.GetCurrentDialogueID();
     
-        var finalEntry = database.GetDialogue(dialogueID);
 
        if (finalEntry != null)
         {
+        StartDialogue(finalEntry.conversation, dialogueID);
+            AnyDialogueRunning = true;
+        }
+       
+            /*if (index >= 0 && index < dialogue.Length)
+            {
+                dialogueText.text = dialogue[index];
+            }
             AnyDialogueRunning = true;
             dialogue = finalEntry.conversation;
-            index = -1;
+            //index = -1;
 
-            dialoguePanel.SetActive(true);
+            dialoguePanel.SetActive(true);*/
 
-            dialogueText.text = dialogue[index];
-        }
+        
     }
     public void NextLine()
     {
-        index++;
-        if (index < dialogue.Length)
+
+        if (index < dialogue.Length - 1)
         {
+            index++;
             dialogueText.text = "";
+
+
             if (typingCoroutine != null) StopCoroutine(typingCoroutine);
             typingCoroutine = StartCoroutine(Typing());
+
         }
-        else
+       else
         {
-            QuestManager.Instance.MarkSeen(dialogueID);
+            if (QuestManager.Instance != null)
+            {
+                QuestManager.Instance.MarkSeen(currentDialogueID);
+            }
             zeroText();
         }
     }
@@ -115,7 +134,10 @@ public class DialogueManager : MonoBehaviour
     {
         AnyDialogueRunning = false;
         dialogueText.text = "";
-        index = 0;
+        index = -1;
+
+        nextInteractTime = Time.time + Cooldown;
+
         if (dialoguePanel != null) dialoguePanel.SetActive(false);
         if (Quest != null) Quest.isDialogueActive = false;
     }

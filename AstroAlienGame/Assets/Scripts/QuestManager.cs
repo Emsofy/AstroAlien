@@ -37,13 +37,7 @@ public class QuestManager : MonoBehaviour
     
     public string DetermineDialogueID(string npcID)
     {
-       
-        if (!GameManager.Instance.HasSeenDialogue(npcID))
-        {
-            return npcID;
-           
-        }
-
+  
         
         if (activeQuests.Contains("SpecialFruit"))
         {
@@ -63,22 +57,14 @@ public class QuestManager : MonoBehaviour
         return npcID + "_Default";
     }
 
-    
-    public void OnDialogueComplete(string dialogueID)
-    {
-       
-        if (dialogueID == "Alien_Intro")
-        {
-            StartQuest("SpecialFruit");
-        }
 
-       
-        if (dialogueID == "SpecialFruit_Complete")
+    public void OnDialogueComplete(string id)
+    {
+        if (id == "SpecialFruit_Complete")
         {
-            GameManager.Instance.RemoveApple(1);
+            GameManager.Instance.RemoveGoldenApple(1);
             activeQuests.Remove("SpecialFruit");
-            Finished = true; 
-            GameManager.Instance.SaveGame();
+            Finished = true;
         }
     }
 
