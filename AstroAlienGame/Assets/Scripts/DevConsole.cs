@@ -201,8 +201,101 @@ public class DevConsole : MonoBehaviour
                 }
 
 
-            }
-            
+            },
+
+            {"Scrap", args =>
+                {
+                    if(args.Length > 0 && int.TryParse(args[0], out int count))
+                    {
+                      GameManager.Instance.AddScrap(count);
+                    
+                       Log("Added " + count + " scrap");
+                    }
+                }
+
+            },
+
+            {"Wood", args =>
+                {
+                    if(args.Length > 0 && int.TryParse(args[0], out int count))
+                    {
+                      GameManager.Instance.AddWood(count);
+
+                       Log("Added " + count + " wood");
+                    }
+                }
+
+            },
+
+             {"Seed", args =>
+                {
+                    if(args.Length > 0 && int.TryParse(args[0], out int count))
+                    {
+                      GameManager.Instance.AddSeed(count);
+
+                       Log("Added " + count + " seed");
+                    }
+                }
+
+            },
+
+              {"Egg", args =>
+                {
+                    if(args.Length > 0 && int.TryParse(args[0], out int count))
+                    {
+                      GameManager.Instance.AddEgg(count);
+
+                       Log("Added " + count + " egg");
+                    }
+                }
+
+            },
+
+             {"GoldEgg", args =>
+                {
+                    if(args.Length > 0 && int.TryParse(args[0], out int count))
+                    {
+                      GameManager.Instance.AddGoldenEgg(count);
+
+                       Log("Added " + count + " golden egg");
+                    }
+                }
+
+            },
+
+              {"Apple", args =>
+                {
+                    if(args.Length > 0 && int.TryParse(args[0], out int count))
+                    {
+                      GameManager.Instance.AddApple(count);
+
+                       Log("Added " + count + " apple");
+                    }
+                }
+
+            },
+                {"GoldApple", args =>
+                {
+                    if(args.Length > 0 && int.TryParse(args[0], out int count))
+                    {
+                      GameManager.Instance.AddGoldenApple(count);
+
+                       Log("Added " + count + " golden apple");
+                    }
+                }
+
+            },
+              {"Chicken", args =>
+                {
+                    if(args.Length > 0 && int.TryParse(args[0], out int count))
+                    {
+                      GameManager.Instance.AddChicken(count);
+
+                       Log("Added " + count + " chicken");
+                    }
+                }
+
+            },
         };
     }
 

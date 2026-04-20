@@ -1172,10 +1172,15 @@ MonoBehaviour:
   hasScrap: 0
   inRepairZone: 0
   repairing: 0
-  repairNumber: 0
+  baseCost: 2
+  baseRepairTime: 10
+  currentRepairLevel: 0
+  currentCost: 0
+  currentRepairTime: 0
   RepairPromptTXT: {fileID: 0}
   yesRepairTXT: {fileID: 0}
   noRepairTXT: {fileID: 0}
+  repairingTXT: {fileID: 0}
 --- !u!54 &313841652
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6596,8 +6601,7 @@ MonoBehaviour:
   treeScript: {fileID: 313841654}
   chickenPrefab: {fileID: 3728843956573097259, guid: 1f88301bdfca04844962a9443b07021c, type: 3}
   activeChicks: []
-  eggPrefab: {fileID: 7382195547350033329, guid: aa7815a7abdba3546a9c44ef5897b68d, type: 3}
-  goldEggPrefab: {fileID: 7382195547350033329, guid: 955871e529a39144ea2762989eb69b57, type: 3}
+  eggPrefab: {fileID: 1242237823176529161, guid: c6cf97d0de8c7d94d859293e6ed84371, type: 3}
   activeEggs: []
   lastComputedOfflineSeconds: 0
   unsavedChanges: 0
