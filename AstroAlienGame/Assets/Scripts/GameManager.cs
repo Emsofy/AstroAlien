@@ -51,6 +51,8 @@ public class GameManager : MonoBehaviour
     public int eggCount;
     public int goldenEggCount;
     public int scrapMetalCount;
+    public GameObject selectedInventory;
+    public int selectedItem;
     //public int[] inventory = new int[8];
 
     [Header("Repairs")]

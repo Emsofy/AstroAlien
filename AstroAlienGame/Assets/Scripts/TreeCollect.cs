@@ -39,7 +39,7 @@ public class TreeCollect : MonoBehaviour
 
     public void PlaceTree()
     {
-        if (Input.GetMouseButtonDown(1) && GameManager.Instance.seedCount >= 1) //add && to check if placeable tile (collision compare tag planter plot)
+        if (Input.GetMouseButtonDown(1) && GameManager.Instance.seedCount >= 1 && GameManager.Instance.selectedItem == 2) //add && to check if placeable tile (collision compare tag planter plot)
         {
             //Vector3 origin = hitPoint.transform.position;
             //Vector3 direction = hitPoint.transform.forward;
@@ -63,10 +63,10 @@ public class TreeCollect : MonoBehaviour
                 GameManager.Instance.RemoveSeed(1);
             }
         }
-        else if (Input.GetMouseButtonDown(1) && GameManager.Instance.seedCount <= 0)
-        {
-            Debug.Log("couldn't plant seed");
-        }
+        //else if 
+        //{
+        //    Debug.Log("couldn't plant seed");
+        //}
         //return seedCount;
     }
 

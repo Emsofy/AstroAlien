@@ -67,7 +67,7 @@ public class Inventory : MonoBehaviour
     }
     void Update()
     {
-        
+        ChangeSelected();
         //UpdateInventory(1, treescript.woodCount);
     }
     //private void OnTriggerEnter(Collider other)
@@ -147,7 +147,93 @@ public class Inventory : MonoBehaviour
         }
     }
    
-
+    public void ChangeSelected()
+    {
+        //for (int i = 0; i < transform.childCount; i++)
+        //{
+        //    transform.GetChild(i).gameObject.SetActive(false);
+        //}
+        if(Input.GetKeyDown("1"))
+        {
+            foreach (Transform child in GameManager.Instance.selectedInventory.transform)
+            {
+                child.gameObject.SetActive(false);
+            } 
+            GameManager.Instance.selectedInventory.transform.GetChild(0).gameObject.SetActive(true);
+            GameManager.Instance.selectedItem = 0;
+        }
+        if (Input.GetKeyDown("2"))
+        {
+            foreach (Transform child in GameManager.Instance.selectedInventory.transform)
+            {
+                child.gameObject.SetActive(false);
+            }
+            GameManager.Instance.selectedInventory.transform.GetChild(1).gameObject.SetActive(true);
+            GameManager.Instance.selectedItem = 1;
+        }
+        if (Input.GetKeyDown("3"))
+        {
+            foreach (Transform child in GameManager.Instance.selectedInventory.transform)
+            {
+                child.gameObject.SetActive(false);
+            }
+            GameManager.Instance.selectedInventory.transform.GetChild(2).gameObject.SetActive(true);
+            GameManager.Instance.selectedItem = 2;
+        }
+        if (Input.GetKeyDown("4"))
+        {
+            foreach (Transform child in GameManager.Instance.selectedInventory.transform)
+            {
+                child.gameObject.SetActive(false);
+            }
+            GameManager.Instance.selectedInventory.transform.GetChild(3).gameObject.SetActive(true);
+            GameManager.Instance.selectedItem = 3;
+        }
+        if (Input.GetKeyDown("5"))
+        {
+            foreach (Transform child in GameManager.Instance.selectedInventory.transform)
+            {
+                child.gameObject.SetActive(false);
+            }
+            GameManager.Instance.selectedInventory.transform.GetChild(4).gameObject.SetActive(true);
+            GameManager.Instance.selectedItem = 4;
+        }
+        if (Input.GetKeyDown("6"))
+        {
+            foreach (Transform child in GameManager.Instance.selectedInventory.transform)
+            {
+                child.gameObject.SetActive(false);
+            }
+            GameManager.Instance.selectedInventory.transform.GetChild(5).gameObject.SetActive(true);
+            GameManager.Instance.selectedItem = 5;
+        }
+        if (Input.GetKeyDown("7"))
+        {
+            foreach (Transform child in GameManager.Instance.selectedInventory.transform)
+            {
+                child.gameObject.SetActive(false);
+            }
+            GameManager.Instance.selectedInventory.transform.GetChild(6).gameObject.SetActive(true);
+            GameManager.Instance.selectedItem = 6;
+        }
+        if (Input.GetKeyDown("8"))
+        {
+            foreach (Transform child in GameManager.Instance.selectedInventory.transform)
+            {
+                child.gameObject.SetActive(false);
+            }
+            GameManager.Instance.selectedInventory.transform.GetChild(7).gameObject.SetActive(true);
+            GameManager.Instance.selectedItem = 7;
+        }
+        //if (Input.GetKeyDown("9"))
+        //{
+        //    foreach (Transform child in GameManager.Instance.selectedInventory.transform)
+        //    {
+        //        child.gameObject.SetActive(false);
+        //    }
+        //    GameManager.Instance.selectedInventory.transform.GetChild(8).gameObject.SetActive(true);
+        //}
+    }
      public void UpdateInventory(int inventoryIndex, int amount)
     {
 

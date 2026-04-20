@@ -82,7 +82,7 @@ void Start()
     public void PlaceChicken()
     {
         //Debug.Log("able to place");
-        if(Input.GetMouseButtonDown(1) && GameManager.Instance.chickenCount>=1)
+        if(Input.GetMouseButtonDown(1) && GameManager.Instance.chickenCount>=1 && GameManager.Instance.selectedItem == 7)
         {
             Debug.Log("running chicken place");
             // Calculate ray origin (slightly in front and above)
@@ -125,7 +125,7 @@ void Start()
             }
             else
             {
-                Debug.Log("Couldn't place chicken (no ground hit)");
+                Debug.Log("Couldn't place chicken");
             }
         }
         //return chickenCount;
