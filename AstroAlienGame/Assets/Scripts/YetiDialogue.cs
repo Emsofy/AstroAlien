@@ -66,7 +66,6 @@ public class YetiDialogue : MonoBehaviour
         }
         else
         {
-
             currentDialogueID = currentNPC.GetCurrentDialogueID();
         }
 
