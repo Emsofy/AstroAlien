@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class DialogueManager : MonoBehaviour
+public class YetiDialogue : MonoBehaviour
 {
     public static DialogueManager Instance;
     public QuestManager Quest;
@@ -37,9 +37,9 @@ public class DialogueManager : MonoBehaviour
     {
         //if (Quest == null) Quest = FindAnyObjectByType<QuestManager>();
         dialoguePanel.SetActive(false);
-  
+
         hasMet = PlayerPrefs.GetInt("HasMetAlien", 0) == 1;
-       
+
     }
 
     private void Update()
@@ -59,30 +59,29 @@ public class DialogueManager : MonoBehaviour
 
     public void Begin()
     {
-        
-            if (!hasMet)
-            {
-                currentDialogueID = "Alien_Intro";
-            }
-            else
-            {
-                
-                currentDialogueID = currentNPC.GetCurrentDialogueID();
-            }
 
-            dialogueID = currentDialogueID;
-            var finalEntry = database.GetDialogue(dialogueID);
+        if (!hasMet)
+        {
+            currentDialogueID = "Yeti_Intro";
+        }
+        else
+        {
+            currentDialogueID = currentNPC.GetCurrentDialogueID();
+        }
 
-            if (finalEntry != null)
-            {
-                StartDialogue(finalEntry.conversation, dialogueID);
-                AnyDialogueRunning = true;
-            }
-            else
-            {
-                Debug.LogError($"Dialogue ID {dialogueID} not found");
-            }
-        
+        dialogueID = currentDialogueID;
+        var finalEntry = database.GetDialogue(dialogueID);
+
+        if (finalEntry != null)
+        {
+            StartDialogue(finalEntry.conversation, dialogueID);
+            AnyDialogueRunning = true;
+        }
+        else
+        {
+            Debug.LogError($"Dialogue ID {dialogueID} not found");
+        }
+
     }
 
     public void StartDialogue(string[] newDialogue, string id)
@@ -109,21 +108,21 @@ public class DialogueManager : MonoBehaviour
         else
         {
             // End convo
-            if (QuestManager.Instance != null) 
-            OnDialogueComplete(currentDialogueID);
+            if (QuestManager.Instance != null)
+                OnDialogueComplete(currentDialogueID);
             zeroText();
         }
     }
 
     public void OnDialogueComplete(string id)
     {
-        if(id== "Alien_Intro")
+        if (id == "Yeti_Intro")
         {
             hasMet = true;
-            PlayerPrefs.SetInt("HasMetAlein", 1);
+            PlayerPrefs.SetInt("HasMetAlien", 1);
             PlayerPrefs.Save();
 
-            if(!QuestManager.Instance.activeQuests.Contains("SpecialFruit"))
+            if (!QuestManager.Instance.activeQuests.Contains("SpecialFruit"))
             {
                 QuestManager.Instance.activeQuests.Add("SpecialFruit");
                 QuestManager.Instance.SaveData();
@@ -170,8 +169,8 @@ public class DialogueManager : MonoBehaviour
             if (Bubble != null) Bubble.enabled = true;
             currentNPC = other.GetComponent<NPC>();
 
-            if (currentNPC == null)currentNPC = GetComponentInParent<NPC>();
-            
+            if (currentNPC == null) currentNPC = GetComponentInParent<NPC>();
+
         }
     }
 
