@@ -225,7 +225,7 @@ public class ChickenMov : MonoBehaviour
         if (egg == null)
         {
             // world is full don't reset timer too aggressively
-            Debug.Log("Egg not spawned — limit reached");
+           // Debug.Log("Egg not spawned — limit reached");
             return;
         }
         //reset timer 

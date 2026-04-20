@@ -1171,7 +1171,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
   hasScrap: 0
   inRepairZone: 0
-  repairing: 0
   baseCost: 2
   baseRepairTime: 10
   currentRepairLevel: 0
@@ -4403,7 +4402,7 @@ GameObject:
   - component: {fileID: 1203633144}
   - component: {fileID: 1203633143}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: DevLog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6603,6 +6602,7 @@ MonoBehaviour:
   activeChicks: []
   eggPrefab: {fileID: 1242237823176529161, guid: c6cf97d0de8c7d94d859293e6ed84371, type: 3}
   activeEggs: []
+  maxEggsInWorld: 20
   lastComputedOfflineSeconds: 0
   unsavedChanges: 0
   chickenScript: {fileID: 313841655}
@@ -6615,6 +6615,9 @@ MonoBehaviour:
   eggCount: 0
   goldenEggCount: 0
   scrapMetalCount: 0
+  currentRepairLevel: 0
+  repairing: 0
+  endTimeTicks: 0
   inventory: 0000000000000000000000000000000000000000000000000000000000000000
 --- !u!4 &1884942292
 Transform:
