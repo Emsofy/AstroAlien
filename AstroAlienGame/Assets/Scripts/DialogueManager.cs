@@ -51,8 +51,8 @@ public class DialogueManager : MonoBehaviour
     {
         if (playerIsClose && Input.GetKeyUp(KeyCode.E) && !isTyping)
         {
-           // nextActionTime = Time.time + cooldown; // Prevents double-firing
-
+            // nextActionTime = Time.time + cooldown; // Prevents double-firing
+            dialogueID = "Alien_Intro";
             if (dialoguePanel.activeInHierarchy)
             {
                 NextLine();
@@ -68,18 +68,15 @@ public class DialogueManager : MonoBehaviour
 
     public void Begin()
     {
+        
         dialogueID = currentNPC.GetCurrentDialogueID();
-        Debug.Log("1. Logic chose ID: " + dialogueID);
-
+    
         var finalEntry = database.GetDialogue(dialogueID);
 
         if (finalEntry == null)
         {
-            Debug.LogError("2. DATABASE ERROR: No entry found for " + dialogueID);
             return;
         }
-
-        Debug.Log("3. SO Found! Lines in this SO: " + finalEntry.conversation.Length);
 
         AnyDialogueRunning = true;
         Quest.isDialogueActive = true;
@@ -89,8 +86,6 @@ public class DialogueManager : MonoBehaviour
         dialoguePanel.SetActive(true);
         NextLine();
     }
-
-
     public void NextLine()
     {
         if (index < dialogue.Length - 1)

@@ -43,6 +43,7 @@ public class QuestManager : MonoBehaviour
         if (!GameManager.Instance.HasSeenDialogue(npcID))
         {
             return npcID;
+           
         }
 
         // 2. Check for Quest Progress
